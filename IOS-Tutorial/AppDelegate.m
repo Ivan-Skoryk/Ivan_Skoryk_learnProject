@@ -49,6 +49,10 @@
         NSLog(@"Name: %@", tmpEmpArr[i].fullName);
     }
     
+    NSLog(@"Removing employee: Name: %@", emp.fullName);
+    [org removeEmployee:emp];
+    NSLog(@"Removed.");
+    
     return YES;
 }
 

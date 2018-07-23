@@ -45,4 +45,6 @@
 
 - (NSArray<Employee*>*)employeesWithSalary:(int) sal tolerance:(int) tol;
 
+- (void)removeEmployee:(Employee *)employee;
+
 @end

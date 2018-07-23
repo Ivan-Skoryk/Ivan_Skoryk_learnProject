@@ -59,13 +59,15 @@
 
 - (NSArray<Employee*>*)employeesWithSalary:(int) sal tolerance:(int) tol;
 
+- (void)removeEmployee:(Employee *)employee;
+
 @end
 
 @implementation Organization
 
 - (id)initWithName:(NSString*)orgName {
     name = orgName;
-    employees = [NSArray array];
+    employees = [[NSArray alloc] init];
     return self;
 }
 
@@ -117,6 +119,12 @@
         return empArray;
     }
     else return nil;
+}
+
+- (void)removeEmployee:(Employee *)employee {
+    NSMutableArray *tmp = [NSMutableArray arrayWithArray:employees];
+    [tmp removeObject:employee];
+    employees = [NSArray arrayWithArray:tmp];
 }
 
 @end
