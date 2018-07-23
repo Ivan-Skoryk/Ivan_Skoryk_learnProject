@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#include "Model.h"
+#import "Organization.h"
 
 @interface AppDelegate ()
 

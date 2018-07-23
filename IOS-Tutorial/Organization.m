@@ -1,5 +1,5 @@
 //
-//  Employee.m
+//  Organization.m
 //  IOS-Tutorial
 //
 //  Created by Ivan Skoryk on 7/23/18.
@@ -7,61 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface Employee : NSObject {
-    
-    @private
-    NSString *firstName;
-    NSString *lastName;
-    
-    @public
-    int salary;
-}
-
-@property(nonatomic, readonly)NSString *fullName;
-
-- (id)initWithFirstName:(NSString*)fName lastName:(NSString*)lName salary:(int)sal;
-
-@end
-
-@implementation Employee
-
-- (NSString*)fullName {
-    return [[firstName stringByAppendingString:@" "] stringByAppendingString: lastName];
-}
-- (id)initWithFirstName:(NSString*)fName lastName:(NSString*)lName salary:(int)sal {
-    firstName = fName;
-    lastName = lName;
-    salary = sal;
-    return self;
-}
-
-@end
-
-@interface Organization : NSObject {
-    
-    @public
-    NSString *name;
-    
-    @private
-    NSArray<Employee *> *employees;
-}
-
-- (id)initWithName:(NSString*)orgName;
-
-- (void)addEmployeeWithName:(NSString*) empName;
-
-- (void)addEmployee:(Employee*)emp;
-
-- (int)calculateAverageSalary;
-
-- (Employee *)employeeWithLowestSalary;
-
-- (NSArray<Employee*>*)employeesWithSalary:(int) sal tolerance:(int) tol;
-
-- (void)removeEmployee:(Employee *)employee;
-
-@end
+#import "Organization.h"
 
 @implementation Organization
 
@@ -101,7 +47,7 @@
                 emp = employees[i];
             }
         }
-    return emp;
+        return emp;
     }
     else return nil;
 }
@@ -128,35 +74,3 @@
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
