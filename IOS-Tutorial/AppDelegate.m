@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#include "Model.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,38 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    NSLog(@"Init employee\n");
+    Employee *emp = [[Employee alloc] initWithFirstName:@"Vasiliy" lastName:@"Poopkin" salary:2500];
+    NSLog(@"Employee name: %@\tSalary: %d", emp.fullName, emp->salary);
+    
+    NSLog(@"Init organization");
+    Organization *org = [[Organization alloc] initWithName:@"Balalaika Ltd."];
+    NSLog(@"Organization: %@", org->name);
+    
+    NSLog(@"Adding some employees to organization");
+    for (int i = 0; i < 7; i++) {
+        NSString *str = [NSString stringWithFormat:@"Name%d Surname%d", i, i];
+        [org addEmployeeWithName:str];
+        NSLog(@"Employee added with name: %@", str);
+    }
+    [org addEmployee:emp];
+    NSLog(@"Employee added by instance: Name: %@\tSalary: %d", emp.fullName, emp->salary);
+    
+    int avgSalary = [org calculateAverageSalary];
+    NSLog(@"Average salary in the company(%@) is %d", org->name, avgSalary);
+    
+    Employee *tmpEmp = [org employeeWithLowestSalary];
+    NSLog(@"Employee with the lowest salary is: Name: %@\tSalary: %d", tmpEmp.fullName, tmpEmp->salary);
+    
+    int tolerance  = 500;
+    
+    NSLog(@"Employees with salary near %d (tolerance: %d):", avgSalary, tolerance);
+    NSArray<Employee*> *tmpEmpArr = [org employeesWithSalary:avgSalary tolerance:tolerance];
+    for(int i = 0; i < [tmpEmpArr count]; i++) {
+        NSLog(@"Name: %@", tmpEmpArr[i].fullName);
+    }
+    
     return YES;
 }
 
