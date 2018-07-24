@@ -14,6 +14,8 @@
 
 @implementation CreateEmployeeViewController
 
+#pragma mark - Variables
+
 @synthesize delegate;
 @synthesize employee;
 @synthesize tap;
@@ -28,6 +30,8 @@
     
     [self.view addGestureRecognizer:tap];
 }
+
+#pragma mark - Utility features
 
 - (void) dissmissKeyboard {
     [self.view endEditing:true];
@@ -55,6 +59,8 @@
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:YES completion:nil];
 }
+
+#pragma mark - Save Button
 
 - (IBAction)saveButtonAction:(id)sender {
     [self createEmployee];
