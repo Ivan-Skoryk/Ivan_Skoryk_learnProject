@@ -13,7 +13,8 @@
 		4A3570F42105D95C002CA6D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A3570F32105D95C002CA6D3 /* Assets.xcassets */; };
 		4A3570F72105D95C002CA6D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3570F52105D95C002CA6D3 /* LaunchScreen.storyboard */; };
 		4A3570FA2105D95C002CA6D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3570F92105D95C002CA6D3 /* main.m */; };
-		4A3571012105D9DD002CA6D3 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3571002105D9DD002CA6D3 /* Model.m */; };
+		4A3571012105D9DD002CA6D3 /* Employee.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3571002105D9DD002CA6D3 /* Employee.m */; };
+		4A357129210627F5002CA6D3 /* Organization.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A357128210627F5002CA6D3 /* Organization.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +28,10 @@
 		4A3570F62105D95C002CA6D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4A3570F82105D95C002CA6D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A3570F92105D95C002CA6D3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		4A3571002105D9DD002CA6D3 /* Model.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
-		4A35712621060064002CA6D3 /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		4A3571002105D9DD002CA6D3 /* Employee.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Employee.m; sourceTree = "<group>"; };
+		4A35712621060064002CA6D3 /* Employee.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Employee.h; sourceTree = "<group>"; };
+		4A357127210627C6002CA6D3 /* Organization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Organization.h; sourceTree = "<group>"; };
+		4A357128210627F5002CA6D3 /* Organization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Organization.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +64,10 @@
 		4A3570E92105D95C002CA6D3 /* IOS-Tutorial */ = {
 			isa = PBXGroup;
 			children = (
-				4A3571002105D9DD002CA6D3 /* Model.m */,
-				4A35712621060064002CA6D3 /* Model.h */,
+				4A35712621060064002CA6D3 /* Employee.h */,
+				4A3571002105D9DD002CA6D3 /* Employee.m */,
+				4A357127210627C6002CA6D3 /* Organization.h */,
+				4A357128210627F5002CA6D3 /* Organization.m */,
 				4A3570EA2105D95C002CA6D3 /* AppDelegate.h */,
 				4A3570EB2105D95C002CA6D3 /* AppDelegate.m */,
 				4A3570ED2105D95C002CA6D3 /* ViewController.h */,
@@ -147,9 +152,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A3570EF2105D95C002CA6D3 /* ViewController.m in Sources */,
-				4A3571012105D9DD002CA6D3 /* Model.m in Sources */,
+				4A3571012105D9DD002CA6D3 /* Employee.m in Sources */,
 				4A3570FA2105D95C002CA6D3 /* main.m in Sources */,
 				4A3570EC2105D95C002CA6D3 /* AppDelegate.m in Sources */,
+				4A357129210627F5002CA6D3 /* Organization.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,7 +8,10 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *textField;
+@property (weak, nonatomic) IBOutlet UILabel *myLabel;
 
 @end
 
@@ -16,7 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [_textField setDelegate:self];
+    _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
 }
 
 
@@ -25,5 +29,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)pressButton:(id)sender {
+    _myLabel.text = _textField.text;
+}
+
+- (BOOL)textFieldShouldClear:(UITextField *)textField {
+    return true;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return true;
+}
 
 @end

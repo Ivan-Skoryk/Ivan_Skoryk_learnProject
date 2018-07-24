@@ -23,26 +23,3 @@
 - (id)initWithFirstName:(NSString*)fName lastName:(NSString*)lName salary:(int)sal;
 
 @end
-
-@interface Organization : NSObject {
-    
-@public
-    NSString *name;
-    
-@private
-    NSArray<Employee *> *employees;
-}
-
-- (id)initWithName:(NSString*)orgName;
-
-- (void)addEmployeeWithName:(NSString*) empName;
-
-- (void)addEmployee:(Employee*)emp;
-
-- (int)calculateAverageSalary;
-
-- (Employee *)employeeWithLowestSalary;
-
-- (NSArray<Employee*>*)employeesWithSalary:(int) sal tolerance:(int) tol;
-
-@end
