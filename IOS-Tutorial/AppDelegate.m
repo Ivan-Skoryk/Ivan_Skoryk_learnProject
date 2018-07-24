@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Organization.h"
+//#import "MainViewController.h"
 
 @interface AppDelegate ()
 
@@ -15,9 +16,8 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
+    /*
     NSLog(@"Init employee\n");
     Employee *emp = [[Employee alloc] initWithFirstName:@"Vasiliy" lastName:@"Poopkin" salary:2500];
     NSLog(@"Employee name: %@\tSalary: %d", emp.fullName, emp->salary);
@@ -32,6 +32,7 @@
         [org addEmployeeWithName:str];
         NSLog(@"Employee added with name: %@", str);
     }
+    
     [org addEmployee:emp];
     NSLog(@"Employee added by instance: Name: %@\tSalary: %d", emp.fullName, emp->salary);
     
@@ -52,7 +53,7 @@
     NSLog(@"Removing employee: Name: %@", emp.fullName);
     [org removeEmployee:emp];
     NSLog(@"Removed.");
-    
+    */
     return YES;
 }
 

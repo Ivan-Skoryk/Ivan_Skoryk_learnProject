@@ -11,11 +11,15 @@
 
 @implementation Organization
 
+#pragma mark - Initialization
+
 - (id)initWithName:(NSString*)orgName {
     name = orgName;
     employees = [[NSArray alloc] init];
     return self;
 }
+
+#pragma mark - Adding features
 
 - (void)addEmployeeWithName:(NSString*) empName {
     Employee *emp = [[Employee alloc] initWithFirstName:[empName componentsSeparatedByString:@" "][0] \
@@ -29,6 +33,8 @@
     [tmp addObject:emp];
     employees = tmp;
 }
+
+#pragma mark - selecting features
 
 - (int)calculateAverageSalary {
     int res = 0;
@@ -67,10 +73,24 @@
     else return nil;
 }
 
+#pragma mark - Remove feature
+
 - (void)removeEmployee:(Employee *)employee {
     NSMutableArray *tmp = [NSMutableArray arrayWithArray:employees];
     [tmp removeObject:employee];
     employees = [NSArray arrayWithArray:tmp];
+}
+
+#pragma mark - Getting features
+
+- (NSArray<Employee *>*)getEmployeeArray {
+    return employees;
+}
+
+- (Employee*) getEmployeeAtIndex:(NSInteger) index {
+    if (index >= 0 && index < [employees count]) {
+        return employees[index];
+    } else return nil;
 }
 
 @end

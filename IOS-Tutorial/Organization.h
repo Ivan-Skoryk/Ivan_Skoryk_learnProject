@@ -15,7 +15,7 @@
     NSString *name;
     
 @private
-    NSArray<Employee *> *employees;
+    NSArray<Employee*> *employees;
 }
 
 - (id)initWithName:(NSString*)orgName;
@@ -31,5 +31,9 @@
 - (NSArray<Employee*>*)employeesWithSalary:(int) sal tolerance:(int) tol;
 
 - (void)removeEmployee:(Employee *)employee;
+
+- (NSArray<Employee*>*) getEmployeeArray;
+
+- (Employee*) getEmployeeAtIndex:(NSInteger) index;
 
 @end
