@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#include "Model.h"
+#import "Organization.h"
 
 @interface AppDelegate ()
 
@@ -48,6 +48,10 @@
     for(int i = 0; i < [tmpEmpArr count]; i++) {
         NSLog(@"Name: %@", tmpEmpArr[i].fullName);
     }
+    
+    NSLog(@"Removing employee: Name: %@", emp.fullName);
+    [org removeEmployee:emp];
+    NSLog(@"Removed.");
     
     return YES;
 }
