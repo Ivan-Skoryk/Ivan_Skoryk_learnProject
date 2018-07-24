@@ -6,8 +6,12 @@
 //  Copyright © 2018 FaiFly. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+#import "Employee.h"
 
-@interface DetailViewController : NSObject
+@interface DetailViewController : UIViewController
+
+@property (strong, nonatomic) Employee *employee;
+@property (weak, nonatomic) IBOutlet UILabel *salaryLabel;
 
 @end

@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 #import "Organization.h"
-#import "DetailViewController2.h"
+#import "DetailViewController.h"
 
 @interface MainViewController () <UITableViewDelegate, UITableViewDataSource>
 

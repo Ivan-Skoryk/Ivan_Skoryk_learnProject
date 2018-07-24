@@ -8,6 +8,20 @@
 
 #import "DetailViewController.h"
 
+@interface DetailViewController ()
+
+@end
+
 @implementation DetailViewController
+
+@synthesize salaryLabel;
+@synthesize employee;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.title = [NSString stringWithFormat:@"%@'s salary is", [employee.fullName componentsSeparatedByString:@" "][1]];
+    salaryLabel.text = [NSString stringWithFormat:@"%d", employee->salary];
+}
 
 @end
