@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Organization.h"
+#import "CreateEmployeeViewController.h"
 
-@interface MainViewController : UIViewController
+@interface MainViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, CreateEmployeeDelegate>
 
 @property (nonatomic, strong) Organization *org;
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;

@@ -7,10 +7,9 @@
 //
 
 #import "MainViewController.h"
-#import "Organization.h"
 #import "DetailViewController.h"
 
-@interface MainViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface MainViewController ()
 
 @end
 
@@ -49,6 +48,17 @@
         DetailViewController *destVC = segue.destinationViewController;
         destVC.employee = [org getEmployeeAtIndex:[myTableView indexPathForSelectedRow].row];
     }
+    if ([segue.identifier isEqualToString:@"showCreateEmployeeVC"]) {
+        CreateEmployeeViewController *destVC = segue.destinationViewController;
+        destVC.delegate = self;
+    }
+}
+
+#pragma mark - CreateEmployeeDelegate
+
+- (void) didTapSaveButton:(Employee*) emp {
+    [org addEmployee:emp];
+    [myTableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
@@ -65,8 +75,9 @@
     return [[org getEmployeeArray] count];
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70.0;
 }
+
 
 @end
