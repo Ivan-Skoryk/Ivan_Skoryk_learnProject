@@ -10,18 +10,17 @@
 
 @interface DetailViewController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *salaryLabel;
+
 @end
 
 @implementation DetailViewController
 
-@synthesize salaryLabel;
-@synthesize employee;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = [NSString stringWithFormat:@"%@'s salary is", [employee.fullName componentsSeparatedByString:@" "][1]];
-    salaryLabel.text = [NSString stringWithFormat:@"%d", employee->salary];
+    self.title = [NSString stringWithFormat:@"%@'s salary is", [self.employee.fullName componentsSeparatedByString:@" "][1]];
+    self.salaryLabel.text = [NSString stringWithFormat:@"%d", self.employee.salary];
 }
 
 @end

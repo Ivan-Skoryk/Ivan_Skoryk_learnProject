@@ -10,25 +10,24 @@
 
 @interface CreateEmployeeViewController ()
 
+@property (strong, nonatomic) Employee *employee;
+@property (strong, nonatomic) UITapGestureRecognizer *tap;
+@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *salaryTextField;
+
 @end
 
 @implementation CreateEmployeeViewController
 
 #pragma mark - Variables
 
-@synthesize delegate;
-@synthesize employee;
-@synthesize tap;
-@synthesize firstNameTextField;
-@synthesize lastNameTextField;
-@synthesize salaryTextField;
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissKeyboard)];
+    self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissKeyboard)];
     
-    [self.view addGestureRecognizer:tap];
+    [self.view addGestureRecognizer:self.tap];
 }
 
 #pragma mark - Utility features
@@ -38,10 +37,10 @@
 }
 
 - (void) createEmployee {
-    if (![firstNameTextField.text  isEqual: @""] || ![lastNameTextField.text  isEqual: @""] || ![salaryTextField.text  isEqual: @""]) {
-                employee = [[Employee alloc] initWithFirstName:firstNameTextField.text
-                                                           lastName:lastNameTextField.text
-                                                             salary:[salaryTextField.text intValue]];
+    if (![self.firstNameTextField.text  isEqual: @""] || ![self.lastNameTextField.text  isEqual: @""] || ![self.salaryTextField.text  isEqual: @""]) {
+                self.employee = [[Employee alloc] initWithFirstName:self.firstNameTextField.text
+                                                           lastName:self.lastNameTextField.text
+                                                             salary:[self.salaryTextField.text intValue]];
     } else {
         [self alert];
     }
@@ -60,11 +59,11 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-#pragma mark - Save Button
+#pragma mark - Handlers
 
 - (IBAction)saveButtonAction:(id)sender {
     [self createEmployee];
-    [delegate didTapSaveButton:employee];
+    [self.delegate didTapSaveButton:self.employee];
     [self.navigationController popViewControllerAnimated:true];
 }
 

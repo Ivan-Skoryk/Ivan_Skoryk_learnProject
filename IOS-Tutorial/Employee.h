@@ -8,17 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Employee : NSObject {
-    
-@private
-    NSString *firstName;
-    NSString *lastName;
-    
-@public
-    int salary;
-}
+@interface Employee : NSObject
 
-@property(nonatomic, readonly)NSString *fullName;
+@property(assign, nonatomic) int salary;
+
+@property(nonatomic, readonly) NSString *fullName;
 
 - (id)initWithFirstName:(NSString*)fName lastName:(NSString*)lName salary:(int)sal;
 

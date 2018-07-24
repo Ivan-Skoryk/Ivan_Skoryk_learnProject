@@ -13,9 +13,8 @@
 @interface MainViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, CreateEmployeeDelegate>
 
 @property (nonatomic, strong) Organization *org;
-@property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
--(void) createOrganizationAndAddingEmployees;
+- (void)createOrganizationAndAddingEmployees;
 
 @end
 

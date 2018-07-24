@@ -9,19 +9,25 @@
 #import <Foundation/Foundation.h>
 #import "Organization.h"
 
+@interface Organization ()
+
+@property(strong, nonatomic) NSArray<Employee*> *employees;
+
+@end
+
 @implementation Organization
 
 #pragma mark - Initialization
 
 - (id)initWithName:(NSString*)orgName {
-    name = orgName;
-    employees = [[NSArray alloc] init];
+    self.name = orgName;
+    self.employees = [[NSArray alloc] init];
     return self;
 }
 
 #pragma mark - Adding features
 
-- (void)addEmployeeWithName:(NSString*) empName {
+- (void)addEmployeeWithName:(NSString*)empName {
     Employee *emp = [[Employee alloc] initWithFirstName:[empName componentsSeparatedByString:@" "][0] \
                                                lastName:[empName componentsSeparatedByString:@" "][1] \
                                                  salary:((arc4random_uniform(491) + 10)*10)];
@@ -29,68 +35,60 @@
 }
 
 - (void)addEmployee:(Employee*)emp {
-    NSMutableArray *tmp = [employees mutableCopy];
+    NSMutableArray *tmp = [self.employees mutableCopy];
     [tmp addObject:emp];
-    employees = tmp;
+    self.employees = tmp;
 }
 
 #pragma mark - selecting features
 
 - (int)calculateAverageSalary {
     int res = 0;
-    for(int i = 0; i < [employees count]; i++) {
-        res += employees[i]->salary;
+    for(int i = 0; i < [self.employees count]; i++) {
+        res += self.employees[i].salary;
     }
-    res /= [employees count];
+    res /= [self.employees count];
     return res;
 }
 
 - (Employee *)employeeWithLowestSalary {
-    if ([employees count] != 0) {
-        Employee *emp = employees[0];
-        for(int i = 1; i < [employees count]; i++) {
-            if(emp->salary > employees[i]->salary) {
-                emp = employees[i];
-            }
+    Employee *emp = self.employees[0];
+    for(int i = 1; i < [self.employees count]; i++) {
+        if(emp.salary > self.employees[i].salary) {
+            emp = self.employees[i];
         }
-        return emp;
     }
-    else return nil;
+    return emp;
 }
 
-- (NSArray<Employee*>*)employeesWithSalary:(int) sal tolerance:(int) tol {
-    if ([employees count] != 0) {
-        NSMutableArray<Employee*> *tmp = [[NSMutableArray alloc] init];;
+- (NSArray<Employee*>*)employeesWithSalary:(int)sal tolerance:(int)tol {
+        NSMutableArray<Employee*> *tmp = [[NSMutableArray alloc] init];
         
-        for(int i = 0; i < [employees count]; i++) {
-            if(employees[i]->salary >= (sal - tol) && employees[i]->salary <= (sal + tol)) {
-                [tmp addObject:employees[i]];
+        for(int i = 0; i < [self.employees count]; i++) {
+            if(self.employees[i].salary >= (sal - tol) && self.employees[i].salary <= (sal + tol)) {
+                [tmp addObject:self.employees[i]];
             }
         }
         NSArray<Employee*> *empArray = [tmp copy];
         return empArray;
-    }
-    else return nil;
 }
 
 #pragma mark - Remove feature
 
 - (void)removeEmployee:(Employee *)employee {
-    NSMutableArray *tmp = [NSMutableArray arrayWithArray:employees];
+    NSMutableArray *tmp = [NSMutableArray arrayWithArray:self.employees];
     [tmp removeObject:employee];
-    employees = [NSArray arrayWithArray:tmp];
+    self.employees = [NSArray arrayWithArray:tmp];
 }
 
 #pragma mark - Getting features
 
 - (NSArray<Employee *>*)getEmployeeArray {
-    return employees;
+    return self.employees;
 }
 
-- (Employee*) getEmployeeAtIndex:(NSInteger) index {
-    if (index >= 0 && index < [employees count]) {
-        return employees[index];
-    } else return nil;
+- (Employee*) getEmployeeAtIndex:(NSInteger)index {
+        return self.employees[index];
 }
 
 @end

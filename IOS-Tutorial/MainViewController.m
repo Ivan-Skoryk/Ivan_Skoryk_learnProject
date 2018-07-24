@@ -11,14 +11,13 @@
 
 @interface MainViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableView *myTableView;
+
 @end
 
 @implementation MainViewController
 
 #pragma mark - Variables
-
-@synthesize myTableView;
-@synthesize org;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,24 +28,24 @@
 
 #pragma mark - Creating data
 
--(void) createOrganizationAndAddingEmployees {
+- (void)createOrganizationAndAddingEmployees {
     NSLog(@"Init organization");
-    org = [[Organization alloc] initWithName:@"Balalaika Ltd."];
-    NSLog(@"Organization: %@", org->name);
+    self.org = [[Organization alloc] initWithName:@"Balalaika Ltd."];
+    NSLog(@"Organization: %@", self.org.name);
     
     NSLog(@"Adding some employees to organization");
     for (int i = 0; i < 7; i++) {
         NSString *str = [NSString stringWithFormat:@"Name%d Surname%d", i, i];
-        [org addEmployeeWithName:str];
+        [self.org addEmployeeWithName:str];
         NSLog(@"Employee added with name: %@", str);
     }
 }
 
 #pragma mark - Segue
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showEmployeeDetail"]) {
         DetailViewController *destVC = segue.destinationViewController;
-        destVC.employee = [org getEmployeeAtIndex:[myTableView indexPathForSelectedRow].row];
+        destVC.employee = [self.org getEmployeeAtIndex:[self.myTableView indexPathForSelectedRow].row];
     }
     if ([segue.identifier isEqualToString:@"showCreateEmployeeVC"]) {
         CreateEmployeeViewController *destVC = segue.destinationViewController;
@@ -56,9 +55,9 @@
 
 #pragma mark - CreateEmployeeDelegate
 
-- (void) didTapSaveButton:(Employee*) emp {
-    [org addEmployee:emp];
-    [myTableView reloadData];
+- (void)didTapSaveButton:(Employee*)emp {
+    [self.org addEmployee:emp];
+    [self.myTableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource
@@ -66,18 +65,17 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"employeeCell" forIndexPath:indexPath];
     
-    cell.textLabel.text = [org getEmployeeAtIndex:indexPath.row].fullName;
+    cell.textLabel.text = [self.org getEmployeeAtIndex:indexPath.row].fullName;
     
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [[org getEmployeeArray] count];
+    return [[self.org getEmployeeArray] count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 70.0;
 }
-
 
 @end

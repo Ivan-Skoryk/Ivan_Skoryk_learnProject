@@ -11,25 +11,17 @@
 
 @protocol CreateEmployeeDelegate <NSObject>
 
-- (void) didTapSaveButton:(Employee*) emp;
+- (void)didTapSaveButton:(Employee*) emp;
 
 @end
 
-@interface CreateEmployeeViewController : UIViewController {
-    id <CreateEmployeeDelegate> _delegate;
-}
+@interface CreateEmployeeViewController : UIViewController
 
-@property (nonatomic, weak) id delegate;
+@property(nonatomic, weak) id <CreateEmployeeDelegate> delegate;
 
-@property (strong, nonatomic) Employee *employee;
-@property (strong, nonatomic) UITapGestureRecognizer *tap;
-@property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
-@property (weak, nonatomic) IBOutlet UITextField *salaryTextField;
+- (void)dissmissKeyboard;
 
-- (void) dissmissKeyboard;
-
-- (void) createEmployee;
+- (void)createEmployee;
 
 - (IBAction)saveButtonAction:(id)sender;
 

@@ -9,16 +9,23 @@
 #import <Foundation/Foundation.h>
 #import "Employee.h"
 
+@interface Employee ()
+
+@property(strong, nonatomic) NSString *firstName;
+@property(strong, nonatomic) NSString *lastName;
+
+@end
+
 @implementation Employee
 
 - (NSString*)fullName {
-    return [[firstName stringByAppendingString:@" "] stringByAppendingString: lastName];
+    return [[self.firstName stringByAppendingString:@" "] stringByAppendingString: self.lastName];
 }
 
 - (id)initWithFirstName:(NSString*)fName lastName:(NSString*)lName salary:(int)sal {
-    firstName = fName;
-    lastName = lName;
-    salary = sal;
+    self.firstName = fName;
+    self.lastName = lName;
+    self.salary = sal;
     return self;
 }
 
