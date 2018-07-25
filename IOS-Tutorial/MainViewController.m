@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self createOrganizationAndAddingEmployees];
+    //[self createOrganizationAndAddingEmployees];
     [self.myTableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
 }
@@ -48,8 +48,8 @@
         destVC.employee = [self.org getEmployeeAtIndex:[self.myTableView indexPathForSelectedRow].row];
     }
     if ([segue.identifier isEqualToString:@"showCreateEmployeeVC"]) {
-        CreateEmployeeViewController *destVC = segue.destinationViewController;
-        destVC.delegate = self;
+        //CreateEmployeeViewController *destVC = segue.destinationViewController;
+        //destVC.delegate = self;
     }
 }
 

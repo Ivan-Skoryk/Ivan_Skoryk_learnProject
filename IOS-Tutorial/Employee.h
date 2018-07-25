@@ -7,13 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 
-@interface Employee : NSObject
+@interface Employee : NSManagedObject
 
 @property (assign, nonatomic) int salary;
 
 @property (nonatomic, readonly) NSString *fullName;
 
-- (id)initWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal;
++ (void)addEmployeeWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal;
 
 @end
+
+#import "Employee+CoreDataProperties.h"

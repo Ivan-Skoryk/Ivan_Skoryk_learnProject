@@ -15,6 +15,8 @@
 
 @property (readonly, strong) NSPersistentContainer *persistentContainer;
 
+@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
+
 - (void)saveContext;
 
 @end

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Employee.h"
+#import "AppDelegate.h"
 
 @interface Employee ()
 
@@ -18,15 +19,33 @@
 
 @implementation Employee
 
+@dynamic firstName;
+@dynamic lastName;
+@dynamic salary;
+
 - (NSString *)fullName {
     return [[self.firstName stringByAppendingString:@" "] stringByAppendingString: self.lastName];
 }
 
-- (id)initWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal {
-    self.firstName = fName;
-    self.lastName = lName;
-    self.salary = sal;
-    return self;
++ (void)addEmployeeWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal {
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.persistentContainer.viewContext;
+    
+    NSManagedObject *newEmployee = [NSEntityDescription insertNewObjectForEntityForName:@"Employee" inManagedObjectContext:context];
+    NSInteger empAI = [[NSUserDefaults standardUserDefaults] integerForKey:@"employeeAutoIncrement"];
+    [newEmployee setValue:@(empAI) forKey:@"idEmployee"];
+    [newEmployee setValue:@(1) forKey:@"idOrganization"];
+    [newEmployee setValue:fName forKey:@"firstName"];
+    [newEmployee setValue:lName forKey:@"lastName"];
+    [newEmployee setValue:@(sal) forKey:@"salary"];
+    empAI += 1;
+    [[NSUserDefaults standardUserDefaults] setInteger:empAI forKey:@"employeeAutoIncrement"];
+    
+    NSError *error = nil;
+    // Save the object to persistent store
+    if (![context save:&error]) {
+        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+    }
 }
 
 @end

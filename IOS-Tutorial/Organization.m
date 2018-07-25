@@ -17,6 +17,9 @@
 
 @implementation Organization
 
+@dynamic employees;
+@dynamic name;
+
 #pragma mark - Initialization
 
 - (id)initWithName:(NSString *)orgName {
@@ -28,10 +31,10 @@
 #pragma mark - Adding features
 
 - (void)addEmployeeWithName:(NSString *)empName {
-    Employee *emp = [[Employee alloc] initWithFirstName:[empName componentsSeparatedByString:@" "][0] \
-                                               lastName:[empName componentsSeparatedByString:@" "][1] \
-                                                 salary:((arc4random_uniform(491) + 10)*10)];
-    [self addEmployee:emp];
+    [Employee addEmployeeWithFirstName:[empName componentsSeparatedByString:@" "][0]
+                              lastName:[empName componentsSeparatedByString:@" "][1]
+                                salary:((arc4random_uniform(491) + 10)*10)];
+//    [self addEmployee:emp];
 }
 
 - (void)addEmployee:(Employee *)emp {

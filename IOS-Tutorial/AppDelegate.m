@@ -16,6 +16,14 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    //[[NSUserDefaults standardUserDefaults] setValue:@(1) forKey:@"employeeAutoIncrement"];
+    
+    //NSLog(@"Documents Directory: %@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
+    
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSLog(@"%ld\t%ld", [defaults integerForKey:@"employeeAutoIncrement"], [defaults integerForKey:@"organizationAutoIncrement"]);
+    
     /*
     NSLog(@"Init employee\n");
     Employee *emp = [[Employee alloc] initWithFirstName:@"Vasiliy" lastName:@"Poopkin" salary:2500];

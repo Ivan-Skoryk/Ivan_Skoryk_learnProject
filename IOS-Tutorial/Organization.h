@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import "Employee.h"
 
-@interface Organization : NSObject
+@interface Organization : NSManagedObject
     
 @property (strong, nonatomic) NSString *name;
 

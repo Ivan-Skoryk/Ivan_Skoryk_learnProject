@@ -10,7 +10,7 @@
 #import "Organization.h"
 #import "CreateEmployeeViewController.h"
 
-@interface MainViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, CreateEmployeeDelegate>
+@interface MainViewController : UIViewController<UITableViewDelegate, UITableViewDataSource/*, CreateEmployeeDelegate*/>
 
 @property (nonatomic, strong) Organization *org;
 
