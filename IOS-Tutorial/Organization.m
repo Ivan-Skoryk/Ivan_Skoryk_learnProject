@@ -11,7 +11,7 @@
 
 @interface Organization ()
 
-@property(strong, nonatomic) NSArray<Employee*> *employees;
+@property (strong, nonatomic) NSArray<Employee *> *employees;
 
 @end
 
@@ -19,7 +19,7 @@
 
 #pragma mark - Initialization
 
-- (id)initWithName:(NSString*)orgName {
+- (id)initWithName:(NSString *)orgName {
     self.name = orgName;
     self.employees = [[NSArray alloc] init];
     return self;
@@ -27,14 +27,14 @@
 
 #pragma mark - Adding features
 
-- (void)addEmployeeWithName:(NSString*)empName {
+- (void)addEmployeeWithName:(NSString *)empName {
     Employee *emp = [[Employee alloc] initWithFirstName:[empName componentsSeparatedByString:@" "][0] \
                                                lastName:[empName componentsSeparatedByString:@" "][1] \
                                                  salary:((arc4random_uniform(491) + 10)*10)];
     [self addEmployee:emp];
 }
 
-- (void)addEmployee:(Employee*)emp {
+- (void)addEmployee:(Employee *)emp {
     NSMutableArray *tmp = [self.employees mutableCopy];
     [tmp addObject:emp];
     self.employees = tmp;
@@ -61,7 +61,7 @@
     return emp;
 }
 
-- (NSArray<Employee*>*)employeesWithSalary:(int)sal tolerance:(int)tol {
+- (NSArray<Employee *> *)employeesWithSalary:(int)sal tolerance:(int)tol {
         NSMutableArray<Employee*> *tmp = [[NSMutableArray alloc] init];
         
         for(int i = 0; i < [self.employees count]; i++) {
@@ -69,7 +69,7 @@
                 [tmp addObject:self.employees[i]];
             }
         }
-        NSArray<Employee*> *empArray = [tmp copy];
+        NSArray<Employee *> *empArray = [tmp copy];
         return empArray;
 }
 
@@ -83,11 +83,11 @@
 
 #pragma mark - Getting features
 
-- (NSArray<Employee *>*)getEmployeeArray {
+- (NSArray<Employee *> *)getEmployeeArray {
     return self.employees;
 }
 
-- (Employee*) getEmployeeAtIndex:(NSInteger)index {
+- (Employee*)getEmployeeAtIndex:(NSInteger)index {
         return self.employees[index];
 }
 

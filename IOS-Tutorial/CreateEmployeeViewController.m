@@ -10,6 +10,8 @@
 
 @interface CreateEmployeeViewController ()
 
+#pragma mark - Variables
+
 @property (strong, nonatomic) Employee *employee;
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
@@ -19,8 +21,6 @@
 @end
 
 @implementation CreateEmployeeViewController
-
-#pragma mark - Variables
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,27 +32,27 @@
 
 #pragma mark - Utility features
 
-- (void) dissmissKeyboard {
+- (void)dissmissKeyboard {
     [self.view endEditing:true];
 }
 
-- (void) createEmployee {
+- (void)createEmployee {
     if (![self.firstNameTextField.text  isEqual: @""] || ![self.lastNameTextField.text  isEqual: @""] || ![self.salaryTextField.text  isEqual: @""]) {
-                self.employee = [[Employee alloc] initWithFirstName:self.firstNameTextField.text
-                                                           lastName:self.lastNameTextField.text
-                                                             salary:[self.salaryTextField.text intValue]];
+        self.employee = [[Employee alloc] initWithFirstName:self.firstNameTextField.text
+                                                   lastName:self.lastNameTextField.text
+                                                     salary:[self.salaryTextField.text intValue]];
     } else {
         [self alert];
     }
     
 }
 
-- (void) alert {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Alert!"
+- (void)alert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert!"
                                                                    message:@"You must fill in all fields."
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {}];
     
     [alert addAction:defaultAction];

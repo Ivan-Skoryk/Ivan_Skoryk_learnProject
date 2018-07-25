@@ -11,7 +11,7 @@
 
 @protocol CreateEmployeeDelegate <NSObject>
 
-- (void)didTapSaveButton:(Employee*) emp;
+- (void)didTapSaveButton:(Employee *) emp;
 
 @end
 

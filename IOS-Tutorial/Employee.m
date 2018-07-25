@@ -11,18 +11,18 @@
 
 @interface Employee ()
 
-@property(strong, nonatomic) NSString *firstName;
-@property(strong, nonatomic) NSString *lastName;
+@property (strong, nonatomic) NSString *firstName;
+@property (strong, nonatomic) NSString *lastName;
 
 @end
 
 @implementation Employee
 
-- (NSString*)fullName {
+- (NSString *)fullName {
     return [[self.firstName stringByAppendingString:@" "] stringByAppendingString: self.lastName];
 }
 
-- (id)initWithFirstName:(NSString*)fName lastName:(NSString*)lName salary:(int)sal {
+- (id)initWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal {
     self.firstName = fName;
     self.lastName = lName;
     self.salary = sal;

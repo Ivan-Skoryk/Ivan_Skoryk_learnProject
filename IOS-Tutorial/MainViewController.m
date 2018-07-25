@@ -22,7 +22,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self createOrganizationAndAddingEmployees];
-    //DetailViewController
+    [self.myTableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
 }
 
@@ -42,7 +42,7 @@
 }
 
 #pragma mark - Segue
-- (void)prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender {
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showEmployeeDetail"]) {
         DetailViewController *destVC = segue.destinationViewController;
         destVC.employee = [self.org getEmployeeAtIndex:[self.myTableView indexPathForSelectedRow].row];
@@ -55,7 +55,7 @@
 
 #pragma mark - CreateEmployeeDelegate
 
-- (void)didTapSaveButton:(Employee*)emp {
+- (void)didTapSaveButton:(Employee *)emp {
     [self.org addEmployee:emp];
     [self.myTableView reloadData];
 }

@@ -11,24 +11,24 @@
 
 @interface Organization : NSObject
     
-@property(strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *name;
 
-- (id)initWithName:(NSString*)orgName;
+- (id)initWithName:(NSString *)orgName;
 
-- (void)addEmployeeWithName:(NSString*)empName;
+- (void)addEmployeeWithName:(NSString *)empName;
 
-- (void)addEmployee:(Employee*)emp;
+- (void)addEmployee:(Employee *)emp;
 
 - (int)calculateAverageSalary;
 
-- (Employee*)employeeWithLowestSalary;
+- (Employee *)employeeWithLowestSalary;
 
-- (NSArray<Employee*>*)employeesWithSalary:(int)sal tolerance:(int)tol;
+- (NSArray<Employee *> *)employeesWithSalary:(int)sal tolerance:(int)tol;
 
-- (void)removeEmployee:(Employee*)employee;
+- (void)removeEmployee:(Employee *)employee;
 
-- (NSArray<Employee*>*)getEmployeeArray;
+- (NSArray<Employee *> *)getEmployeeArray;
 
-- (Employee*)getEmployeeAtIndex:(NSInteger)index;
+- (Employee *)getEmployeeAtIndex:(NSInteger)index;
 
 @end
