@@ -9,19 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate> //{
-//    NSManagedObjectModel *managedObjectModel;
-//    NSManagedObjectContext *managedObjectContext;
-//    NSPersistentStoreCoordinator *persistentStoreCoordinator;
-//}
-
-//@property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
-//@property (nonatomic, retain, readonly) NSManagedObjectContext *managedObjectContext;
-//@property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-//- (NSString *)applicationDocumentsDirectory;
+@property (readonly, strong) NSPersistentContainer *persistentContainer;
+
+- (void)saveContext;
 
 @end
 
