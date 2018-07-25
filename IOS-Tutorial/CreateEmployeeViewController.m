@@ -25,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.employee = nil;
+    
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissKeyboard)];
     
     [self.view addGestureRecognizer:self.tap];
@@ -37,7 +39,7 @@
 }
 
 - (void)createEmployee {
-    if (![self.firstNameTextField.text  isEqual: @""] || ![self.lastNameTextField.text  isEqual: @""] || ![self.salaryTextField.text  isEqual: @""]) {
+    if (![self.firstNameTextField.text  isEqual: @""] && ![self.lastNameTextField.text  isEqual: @""] && ![self.salaryTextField.text  isEqual: @""]) {
         self.employee = [[Employee alloc] initWithFirstName:self.firstNameTextField.text
                                                    lastName:self.lastNameTextField.text
                                                      salary:[self.salaryTextField.text intValue]];
@@ -63,8 +65,10 @@
 
 - (IBAction)saveButtonAction:(id)sender {
     [self createEmployee];
-    [self.delegate didTapSaveButton:self.employee];
-    [self.navigationController popViewControllerAnimated:true];
+    if (self.employee) {
+        [self.delegate didTapSaveButton:self.employee];
+        [self.navigationController popViewControllerAnimated:true];
+    }
 }
 
 @end
