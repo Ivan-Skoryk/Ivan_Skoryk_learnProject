@@ -16,8 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<Employee *> *)fetchRequest;
 
++ (NSManagedObject *)addEmployeeWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal;
+
 @property (nonatomic) int16_t idEmployee;
 @property (nonatomic) int16_t idOrganization;
+@property (nullable, nonatomic, copy) NSString *firstName;
+@property (nullable, nonatomic, copy) NSString *lastName;
+@property (nonatomic) int32_t salary;
 
 @end
 

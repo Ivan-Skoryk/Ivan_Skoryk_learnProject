@@ -5,17 +5,19 @@
         <attribute name="idEmployee" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="idOrganization" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="salary" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="salary" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <relationship name="refersToOrganization" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Organization" inverseName="hasEmployees" inverseEntity="Organization" syncable="YES"/>
     </entity>
     <entity name="Organization" representedClassName=".Organization" syncable="YES">
         <attribute name="idOrganization" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="hasEmployees" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Employee" inverseName="refersToOrganization" inverseEntity="Employee" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint/>
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Organization" positionX="-45" positionY="0" width="128" height="30"/>
-        <element name="Employee" positionX="-18" positionY="27" width="128" height="30"/>
+        <element name="Employee" positionX="-378" positionY="-97" width="128" height="133"/>
+        <element name="Organization" positionX="-630" positionY="-37" width="128" height="73"/>
     </elements>
 </model>

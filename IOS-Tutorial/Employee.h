@@ -15,7 +15,7 @@
 
 @property (nonatomic, readonly) NSString *fullName;
 
-+ (void)addEmployeeWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal;
+- (id) initWithManagedObject:(NSManagedObject *)obj;
 
 @end
 

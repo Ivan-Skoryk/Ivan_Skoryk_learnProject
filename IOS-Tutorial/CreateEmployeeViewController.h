@@ -9,19 +9,19 @@
 #import <UIKit/UIKit.h>
 #import "Employee.h"
 
-//@protocol CreateEmployeeDelegate <NSObject>
-//
-//- (void)didTapSaveButton;//:(Employee *) emp;
-//
-//@end
+@protocol CreateEmployeeDelegate <NSObject>
+
+- (void)didTapSaveButton;
+
+@end
 
 @interface CreateEmployeeViewController : UIViewController
 
-//@property(nonatomic, weak) id <CreateEmployeeDelegate> delegate;
+@property (nonatomic, weak) id <CreateEmployeeDelegate> delegate;
 
 - (void)dissmissKeyboard;
 
-//- (void)createEmployee;
+- (void)createEmployee;
 
 - (IBAction)saveButtonAction:(id)sender;
 

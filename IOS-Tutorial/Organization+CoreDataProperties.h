@@ -2,7 +2,7 @@
 //  Organization+CoreDataProperties.h
 //  IOS-Tutorial
 //
-//  Created by Ivan Skoryk on 7/25/18.
+//  Created by Ivan Skoryk on 7/26/18.
 //  Copyright © 2018 FaiFly. All rights reserved.
 //
 //
@@ -16,7 +16,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSFetchRequest<Organization *> *)fetchRequest;
 
++ (NSManagedObject *)addOrganizationWithName:(NSString *)name;
+
 @property (nonatomic) int16_t idOrganization;
+@property (nullable, nonatomic, copy) NSString *name;
 
 @end
 

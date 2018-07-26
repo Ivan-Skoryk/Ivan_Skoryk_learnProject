@@ -14,7 +14,9 @@
     
 @property (strong, nonatomic) NSString *name;
 
-- (id)initWithName:(NSString *)orgName;
+- (id)initWithManagedObject:(NSManagedObject *)obj;
+
+- (void)loadEmployeesFromArray:(NSArray *)empArr;
 
 - (void)addEmployeeWithName:(NSString *)empName;
 
