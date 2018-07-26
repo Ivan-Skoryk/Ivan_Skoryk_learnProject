@@ -9,12 +9,16 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "Employee.h"
 
 @class OrganizationMO;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface EmployeeMO : NSManagedObject
+
+- (EmployeeMO *)addNewEmployeeWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal;
++ (EmployeeMO *)employeeToMO:(Employee *)emp;
 
 @end
 
