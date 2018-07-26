@@ -12,7 +12,6 @@
 
 #pragma mark - Variables
 
-@property (strong, nonatomic) Employee *employee;
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
@@ -24,8 +23,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.employee = nil;
     
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissKeyboard)];
     
@@ -40,13 +37,13 @@
 
 - (void)createEmployee {
     if (![self.firstNameTextField.text  isEqual: @""] && ![self.lastNameTextField.text  isEqual: @""] && ![self.salaryTextField.text  isEqual: @""]) {
-        self.employee = [[Employee alloc] initWithFirstName:self.firstNameTextField.text
-                                                   lastName:self.lastNameTextField.text
-                                                     salary:[self.salaryTextField.text intValue]];
+        [Employee addEmployeeWithFirstName:self.firstNameTextField.text lastName:self.lastNameTextField.text salary:[self.salaryTextField.text intValue]];
+        [self.delegate didTapSaveButton];
+        [self.navigationController popViewControllerAnimated:true];
     } else {
         [self alert];
     }
-    
+
 }
 
 - (void)alert {
@@ -65,10 +62,6 @@
 
 - (IBAction)saveButtonAction:(id)sender {
     [self createEmployee];
-    if (self.employee) {
-        [self.delegate didTapSaveButton:self.employee];
-        [self.navigationController popViewControllerAnimated:true];
-    }
 }
 
 @end

@@ -17,30 +17,42 @@
 
 @implementation Organization
 
+@synthesize employees;
+@synthesize name;
+
 #pragma mark - Initialization
 
-- (id)initWithName:(NSString *)orgName {
-    self.name = orgName;
+- (id)initWithManagedObject:(NSManagedObject *)obj {
+    self.name = [[obj valueForKey:@"name"] copy];
     self.employees = [[NSArray alloc] init];
     return self;
 }
 
 #pragma mark - Adding features
 
+- (void)loadEmployeesFromArray:(NSArray<NSManagedObject *> *)empArr {
+    NSMutableArray *tmp = [self.employees mutableCopy];;
+    [tmp removeAllObjects];
+    for(int i = 0; i < [empArr count]; i++) {
+        Employee *emp = [[[Employee alloc] init] initWithManagedObject:empArr[i]];
+        [tmp addObject:emp];
+    }
+    self.employees = [tmp copy];
+}
+
 - (void)addEmployeeWithName:(NSString *)empName {
-    Employee *emp = [[Employee alloc] initWithFirstName:[empName componentsSeparatedByString:@" "][0] \
-                                               lastName:[empName componentsSeparatedByString:@" "][1] \
-                                                 salary:((arc4random_uniform(491) + 10)*10)];
-    [self addEmployee:emp];
+    [Employee addEmployeeWithFirstName:[empName componentsSeparatedByString:@" "][0]
+                              lastName:[empName componentsSeparatedByString:@" "][1]
+                                salary:((arc4random_uniform(491) + 10)*10)];
 }
 
 - (void)addEmployee:(Employee *)emp {
     NSMutableArray *tmp = [self.employees mutableCopy];
     [tmp addObject:emp];
-    self.employees = tmp;
+    self.employees = [tmp copy];
 }
 
-#pragma mark - selecting features
+#pragma mark - Ыelecting features
 
 - (int)calculateAverageSalary {
     int res = 0;

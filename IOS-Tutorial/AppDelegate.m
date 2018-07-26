@@ -16,6 +16,37 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+//    [[NSUserDefaults standardUserDefaults] setValue:@(1) forKey:@"employeeAutoIncrement"];
+//    [[NSUserDefaults standardUserDefaults] setValue:@(1) forKey:@"organizationAutoIncrement"];
+//
+//    //NSFetchRequest *request = [Employee fetchRequest];
+//    //[request setReturnsObjectsAsFaults:NO];
+//
+//    //NSLog([self.persistentContainer.viewContext executeFetchRequest:request error:nil].description);
+//
+//    NSManagedObjectContext *context = self.persistentContainer.viewContext;
+//
+//    NSManagedObject * newOrg = [NSEntityDescription insertNewObjectForEntityForName:@"Organization" inManagedObjectContext:context];
+//    NSInteger orgAI = [[NSUserDefaults standardUserDefaults] integerForKey:@"organizationAutoIncrement"];
+//    [newOrg setValue:@(orgAI) forKey:@"idOrganization"];
+//    [newOrg setValue:@"Balalaika Ltd." forKey:@"name"];
+//    orgAI += 1;
+//    [[NSUserDefaults standardUserDefaults] setInteger:orgAI forKey:@"organizationAutoIncrement"];
+//
+//    NSError *error = nil;
+//    // Save the object to persistent store
+//    if (![context save:&error]) {
+//        NSLog(@"Can't Save! %@ %@", error, [error localizedDescription]);
+//    }
+    
+    
+    
+    NSLog(@"Documents Directory: %@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
+    
+    //NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    //NSLog(@"%ld\t%ld", [defaults integerForKey:@"employeeAutoIncrement"], [defaults integerForKey:@"organizationAutoIncrement"]);
+    
     /*
     NSLog(@"Init employee\n");
     Employee *emp = [[Employee alloc] initWithFirstName:@"Vasiliy" lastName:@"Poopkin" salary:2500];

@@ -18,14 +18,22 @@
 
 @implementation Employee
 
+@synthesize firstName;
+@synthesize lastName;
+@synthesize salary;
+
 - (NSString *)fullName {
     return [[self.firstName stringByAppendingString:@" "] stringByAppendingString: self.lastName];
 }
 
-- (id)initWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal {
-    self.firstName = fName;
-    self.lastName = lName;
-    self.salary = sal;
+#pragma mark - Initialization
+
+- (id)initWithManagedObject:(NSManagedObject *)obj {
+    
+    self.firstName = [[obj valueForKey:@"firstName"] copy];
+    self.lastName = [[obj valueForKey:@"lastName"] copy];
+    self.salary = [[obj valueForKey:@"salary"] intValue];
+    
     return self;
 }
 

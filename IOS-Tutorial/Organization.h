@@ -7,13 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreData/CoreData.h>
 #import "Employee.h"
 
-@interface Organization : NSObject
+@interface Organization : NSManagedObject
     
 @property (strong, nonatomic) NSString *name;
 
-- (id)initWithName:(NSString *)orgName;
+- (id)initWithManagedObject:(NSManagedObject *)obj;
+
+- (void)loadEmployeesFromArray:(NSArray *)empArr;
 
 - (void)addEmployeeWithName:(NSString *)empName;
 

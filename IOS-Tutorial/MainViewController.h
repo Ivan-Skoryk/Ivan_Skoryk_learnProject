@@ -14,6 +14,8 @@
 
 @property (nonatomic, strong) Organization *org;
 
+- (void)reloadEmployeesForOrganization:(Organization *)org;
+
 - (void)createOrganizationAndAddingEmployees;
 
 @end

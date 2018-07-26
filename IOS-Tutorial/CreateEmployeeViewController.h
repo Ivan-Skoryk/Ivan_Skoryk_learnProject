@@ -11,13 +11,13 @@
 
 @protocol CreateEmployeeDelegate <NSObject>
 
-- (void)didTapSaveButton:(Employee *) emp;
+- (void)didTapSaveButton;
 
 @end
 
 @interface CreateEmployeeViewController : UIViewController
 
-@property(nonatomic, weak) id <CreateEmployeeDelegate> delegate;
+@property (nonatomic, weak) id <CreateEmployeeDelegate> delegate;
 
 - (void)dissmissKeyboard;
 
