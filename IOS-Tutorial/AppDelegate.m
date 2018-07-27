@@ -25,7 +25,7 @@
 
     NSFetchRequest *request = [EmployeeMO fetchRequest];
     [request setReturnsObjectsAsFaults:NO];
-    NSArray *empList = [context executeRequest:request error:nil];
+    EmployeeMO *empList = [context executeRequest:request error:nil];
     NSLog(empList.description);
     
     /*
