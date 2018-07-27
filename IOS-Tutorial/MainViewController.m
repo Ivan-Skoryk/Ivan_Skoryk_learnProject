@@ -29,15 +29,15 @@
 #pragma mark - Creating data
 
 - (void)createOrganizationAndAddingEmployees {
-    NSLog(@"Init organization");
+    //NSLog(@"Init organization");
     self.org = [[Organization alloc] initWithName:@"Balalaika Ltd."];
-    NSLog(@"Organization: %@", self.org.name);
+    //NSLog(@"Organization: %@", self.org.name);
     
-    NSLog(@"Adding some employees to organization");
+    //NSLog(@"Adding some employees to organization");
     for (int i = 0; i < 7; i++) {
         NSString *str = [NSString stringWithFormat:@"Name%d Surname%d", i, i];
         [self.org addEmployeeWithName:str];
-        NSLog(@"Employee added with name: %@", str);
+        //NSLog(@"Employee added with name: %@", str);
     }
 }
 
