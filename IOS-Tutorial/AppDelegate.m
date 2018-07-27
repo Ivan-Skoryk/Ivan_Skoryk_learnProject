@@ -19,14 +19,34 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    
     NSLog(@"Documents Directory: %@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
     
-    NSManagedObjectContext *context = self.persistentContainer.viewContext;
-
-    NSFetchRequest *request = [EmployeeMO fetchRequest];
-    [request setReturnsObjectsAsFaults:NO];
-    EmployeeMO *empList = [context executeRequest:request error:nil];
-    NSLog(empList.description);
+////    [OrganizationMO addNewOrganizationWithName:@"Balalaika Ltd."];
+////
+//    NSFetchRequest *request = [EmployeeMO fetchRequest];
+//    [request setReturnsObjectsAsFaults:NO];
+//    [request setShouldRefreshRefetchedObjects:YES];
+////    [request setPredicate:[NSPredicate predicateWithFormat:@"organization.name == %@", @"Balalaika Ltd."]];
+//    NSArray<EmployeeMO *> *tmp = [self.persistentContainer.viewContext executeFetchRequest:request error:nil];
+////    NSLog(@"%@", tmp.description);
+////    for(int i = 0; i < [tmp count]; i++) {
+////        NSLog(@"%d", (int)[tmp[i] valueForKey:@"salary"]);
+////    }
+//
+//    NSSet<EmployeeMO *> *empArr = [NSSet setWithArray:tmp];
+//
+//    request = [OrganizationMO fetchRequest];
+//    [request setReturnsObjectsAsFaults:NO];
+//    OrganizationMO *org = [self.persistentContainer.viewContext executeFetchRequest:request error:nil].firstObject;
+//    NSLog(@"%@", org.description);
+//
+//    [org addEmployees:empArr];
+//
+//    NSError *error;
+//    if (![self.persistentContainer.viewContext save:&error]) {
+//        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+//    }
     
     /*
     NSLog(@"Init employee\n");

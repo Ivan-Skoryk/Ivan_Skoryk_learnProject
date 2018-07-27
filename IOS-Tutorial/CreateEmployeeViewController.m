@@ -12,7 +12,7 @@
 
 #pragma mark - Variables
 
-@property (strong, nonatomic) Employee *employee;
+//@property (strong, nonatomic) Employee *employee;
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
@@ -38,11 +38,12 @@
 
 - (void)createEmployee {
     if (![self.firstNameTextField.text  isEqual: @""] || ![self.lastNameTextField.text  isEqual: @""] || ![self.salaryTextField.text  isEqual: @""]) {
-        self.employee = [[Employee alloc] initWithFirstName:self.firstNameTextField.text
-                                                   lastName:self.lastNameTextField.text
-                                                     salary:[self.salaryTextField.text intValue]];
-        [EmployeeMO addNewEmployeeWithFirstName:self.firstNameTextField.text lastName:self.lastNameTextField.text salary:[self.salaryTextField.text intValue]];
-        [self.delegate didTapSaveButton:self.employee];
+//        self.employee = [[Employee alloc] initWithFirstName:self.firstNameTextField.text
+//                                                   lastName:self.lastNameTextField.text
+//                                                     salary:[self.salaryTextField.text intValue]];
+        EmployeeMO *emp = [EmployeeMO addNewEmployeeWithFirstName:self.firstNameTextField.text lastName:self.lastNameTextField.text salary:[self.salaryTextField.text intValue]];
+        //[self.org addEmployeesObject:emp];
+        [self.delegate didTapSaveButton:emp];
         [self.navigationController popViewControllerAnimated:true];
     } else {
         [self alert];

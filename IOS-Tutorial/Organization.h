@@ -15,6 +15,8 @@
 
 - (id)initWithName:(NSString *)orgName;
 
+- (void)reloadEmployeesWithArray:(NSArray *)empArr;
+
 - (void)addEmployeeWithName:(NSString *)empName;
 
 - (void)addEmployee:(Employee *)emp;

@@ -17,8 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OrganizationMO : NSManagedObject
 
-- (OrganizationMO *)addNewOrganizationWithName:(NSString *)name;
-//+ (void)updateOrganizationByName:(NSString *)name;
++ (OrganizationMO *)addNewOrganizationWithName:(NSString *)name;
++ (Organization *)moToOrganization:(OrganizationMO *)mo;
 
 @end
 

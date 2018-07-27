@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (EmployeeMO *)addNewEmployeeWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal;
 + (EmployeeMO *)employeeToMO:(Employee *)emp;
-- (Employee *)moToEmployee;
++ (Employee *)moToEmployee:(NSManagedObject *)mo;
 
 @end
 

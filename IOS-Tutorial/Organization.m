@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "Organization.h"
+#import "EmployeeMO.h"
 
 @interface Organization ()
 
@@ -26,6 +27,14 @@
 }
 
 #pragma mark - Adding features
+
+- (void)reloadEmployeesWithArray:(NSArray *)empArr {
+    self.employees = [NSArray array];
+    
+    for(int i = 0; i < [empArr count]; i++) {
+        [self addEmployee:[EmployeeMO moToEmployee:empArr[i]]];
+    }
+}
 
 - (void)addEmployeeWithName:(NSString *)empName {
     Employee *emp = [[Employee alloc] initWithFirstName:[empName componentsSeparatedByString:@" "][0] \

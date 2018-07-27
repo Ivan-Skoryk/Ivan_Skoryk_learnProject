@@ -9,16 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "Employee.h"
 #import "EmployeeMO.h"
+#import "OrganizationMO.h"
 
 @protocol CreateEmployeeDelegate <NSObject>
 
-- (void)didTapSaveButton:(Employee *) emp;
+- (void)didTapSaveButton:(EmployeeMO *) emp;
 
 @end
 
 @interface CreateEmployeeViewController : UIViewController
 
-@property(nonatomic, weak) id <CreateEmployeeDelegate> delegate;
+//@property (strong, nonatomic) OrganizationMO* org;
+@property (nonatomic, weak) id <CreateEmployeeDelegate> delegate;
 
 - (void)dissmissKeyboard;
 

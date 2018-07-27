@@ -12,11 +12,11 @@
 
 @implementation EmployeeMO
 
-+ (EmployeeMO *)addNewEmployeeWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal {
++ (NSManagedObject *)addNewEmployeeWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal {
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.persistentContainer.viewContext;
     
-    EmployeeMO *emp = [NSEntityDescription insertNewObjectForEntityForName:@"EmployeeMO" inManagedObjectContext:context];
+    NSManagedObject *emp = [NSEntityDescription insertNewObjectForEntityForName:@"EmployeeMO" inManagedObjectContext:context];
     [emp setValue:fName forKey:@"firstName"];
     [emp setValue:lName forKey:@"lastName"];
     [emp setValue:@(sal) forKey:@"salary"];
@@ -38,8 +38,8 @@
     return mo;
 }
 
-- (Employee *)moToEmployee {
-    return [[Employee alloc] initWithFirstName:self.firstName lastName:self.lastName salary:self.salary];
++ (Employee *)moToEmployee:(NSManagedObject *)mo {
+    return [[Employee alloc] initWithFirstName:[mo valueForKey:@"firstName"] lastName:[mo valueForKey:@"lastName"] salary:[[mo valueForKey:@"salary"] intValue]];
 }
 
 @end
