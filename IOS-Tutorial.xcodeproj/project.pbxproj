@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A079C76210A1BB9000F6F6E /* CoreModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4A079C73210A1BA9000F6F6E /* CoreModel.xcdatamodeld */; };
+		4A079C7F210A1C7F000F6F6E /* EmployeeMO.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A079C79210A1C7F000F6F6E /* EmployeeMO.m */; };
+		4A079C80210A1C7F000F6F6E /* EmployeeMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A079C7A210A1C7F000F6F6E /* EmployeeMO+CoreDataProperties.m */; };
+		4A079C81210A1C7F000F6F6E /* OrganizationMO.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A079C7D210A1C7F000F6F6E /* OrganizationMO.m */; };
+		4A079C82210A1C7F000F6F6E /* OrganizationMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A079C7E210A1C7F000F6F6E /* OrganizationMO+CoreDataProperties.m */; };
 		4A1222FB21073B0300055307 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1222FA21073B0200055307 /* DetailViewController.m */; };
 		4A1222FF21074F7C00055307 /* CreateEmployeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1222FE21074F7C00055307 /* CreateEmployeeViewController.m */; };
 		4A3570EC2105D95C002CA6D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3570EB2105D95C002CA6D3 /* AppDelegate.m */; };
@@ -20,6 +25,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A079C74210A1BA9000F6F6E /* CoreModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreModel.xcdatamodel; sourceTree = "<group>"; };
+		4A079C77210A1C7F000F6F6E /* EmployeeMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EmployeeMO+CoreDataProperties.h"; sourceTree = "<group>"; };
+		4A079C78210A1C7F000F6F6E /* EmployeeMO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmployeeMO.h; sourceTree = "<group>"; };
+		4A079C79210A1C7F000F6F6E /* EmployeeMO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmployeeMO.m; sourceTree = "<group>"; };
+		4A079C7A210A1C7F000F6F6E /* EmployeeMO+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "EmployeeMO+CoreDataProperties.m"; sourceTree = "<group>"; };
+		4A079C7B210A1C7F000F6F6E /* OrganizationMO+CoreDataProperties.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OrganizationMO+CoreDataProperties.h"; sourceTree = "<group>"; };
+		4A079C7C210A1C7F000F6F6E /* OrganizationMO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrganizationMO.h; sourceTree = "<group>"; };
+		4A079C7D210A1C7F000F6F6E /* OrganizationMO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrganizationMO.m; sourceTree = "<group>"; };
+		4A079C7E210A1C7F000F6F6E /* OrganizationMO+CoreDataProperties.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "OrganizationMO+CoreDataProperties.m"; sourceTree = "<group>"; };
 		4A1222F921073B0200055307 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		4A1222FA21073B0200055307 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		4A1222FD21074F7C00055307 /* CreateEmployeeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateEmployeeViewController.h; sourceTree = "<group>"; };
@@ -54,6 +68,14 @@
 		4A3570DE2105D95B002CA6D3 = {
 			isa = PBXGroup;
 			children = (
+				4A079C78210A1C7F000F6F6E /* EmployeeMO.h */,
+				4A079C79210A1C7F000F6F6E /* EmployeeMO.m */,
+				4A079C77210A1C7F000F6F6E /* EmployeeMO+CoreDataProperties.h */,
+				4A079C7A210A1C7F000F6F6E /* EmployeeMO+CoreDataProperties.m */,
+				4A079C7C210A1C7F000F6F6E /* OrganizationMO.h */,
+				4A079C7D210A1C7F000F6F6E /* OrganizationMO.m */,
+				4A079C7B210A1C7F000F6F6E /* OrganizationMO+CoreDataProperties.h */,
+				4A079C7E210A1C7F000F6F6E /* OrganizationMO+CoreDataProperties.m */,
 				4A3570E92105D95C002CA6D3 /* IOS-Tutorial */,
 				4A3570E82105D95C002CA6D3 /* Products */,
 			);
@@ -83,6 +105,7 @@
 				4A1222FD21074F7C00055307 /* CreateEmployeeViewController.h */,
 				4A1222FE21074F7C00055307 /* CreateEmployeeViewController.m */,
 				4A3570F02105D95C002CA6D3 /* Main.storyboard */,
+				4A079C73210A1BA9000F6F6E /* CoreModel.xcdatamodeld */,
 				4A3570F32105D95C002CA6D3 /* Assets.xcassets */,
 				4A3570F52105D95C002CA6D3 /* LaunchScreen.storyboard */,
 				4A3570F82105D95C002CA6D3 /* Info.plist */,
@@ -161,13 +184,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A079C76210A1BB9000F6F6E /* CoreModel.xcdatamodeld in Sources */,
+				4A079C81210A1C7F000F6F6E /* OrganizationMO.m in Sources */,
+				4A079C82210A1C7F000F6F6E /* OrganizationMO+CoreDataProperties.m in Sources */,
 				4A3570EF2105D95C002CA6D3 /* MainViewController.m in Sources */,
+				4A079C7F210A1C7F000F6F6E /* EmployeeMO.m in Sources */,
 				4A3571012105D9DD002CA6D3 /* Employee.m in Sources */,
 				4A1222FF21074F7C00055307 /* CreateEmployeeViewController.m in Sources */,
 				4A3570FA2105D95C002CA6D3 /* main.m in Sources */,
 				4A3570EC2105D95C002CA6D3 /* AppDelegate.m in Sources */,
 				4A1222FB21073B0300055307 /* DetailViewController.m in Sources */,
 				4A357129210627F5002CA6D3 /* Organization.m in Sources */,
+				4A079C80210A1C7F000F6F6E /* EmployeeMO+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +388,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4A079C73210A1BA9000F6F6E /* CoreModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4A079C74210A1BA9000F6F6E /* CoreModel.xcdatamodel */,
+			);
+			currentVersion = 4A079C74210A1BA9000F6F6E /* CoreModel.xcdatamodel */;
+			path = CoreModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4A3570DF2105D95B002CA6D3 /* Project object */;
 }

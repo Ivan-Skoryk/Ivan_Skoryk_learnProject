@@ -21,24 +21,50 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self createOrganizationAndAddingEmployees];
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    self.context = delegate.persistentContainer.viewContext;
+    [self loadOrganization];
+    
     [self.myTableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
 }
 
 #pragma mark - Creating data
 
-- (void)createOrganizationAndAddingEmployees {
-    NSLog(@"Init organization");
-    self.org = [[Organization alloc] initWithName:@"Balalaika Ltd."];
-    NSLog(@"Organization: %@", self.org.name);
+- (void)loadOrganization {
+    NSManagedObjectContext *threadContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [threadContext setParentContext:self.context];
     
-    NSLog(@"Adding some employees to organization");
+    NSFetchRequest *request = [OrganizationMO fetchRequest];
+    
+    self.moOrg = [threadContext executeFetchRequest:request error:nil].firstObject;
+    //NSLog(mo.description);
+    
+    self.org = [OrganizationMO moToOrganization:self.moOrg];
+}
+
+- (void)createOrganizationAndAddingEmployees {
+    //NSLog(@"Init organization");
+    self.org = [[Organization alloc] initWithName:@"Balalaika Ltd."];
+    //NSLog(@"Organization: %@", self.org.name);
+
+    //NSLog(@"Adding some employees to organization");
     for (int i = 0; i < 7; i++) {
         NSString *str = [NSString stringWithFormat:@"Name%d Surname%d", i, i];
         [self.org addEmployeeWithName:str];
-        NSLog(@"Employee added with name: %@", str);
+        //NSLog(@"Employee added with name: %@", str);
     }
+}
+
+- (void)reloadEmployees {
+    NSManagedObjectContext *threadContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [threadContext setParentContext:self.context];
+    
+    NSFetchRequest *request = [EmployeeMO fetchRequest];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"organization.name == %@", self.org.name]];
+    NSArray<NSManagedObject *> *empArr = [threadContext executeFetchRequest:request error:nil];
+    
+    [self.org reloadEmployeesWithArray:empArr];
 }
 
 #pragma mark - Segue
@@ -55,8 +81,16 @@
 
 #pragma mark - CreateEmployeeDelegate
 
-- (void)didTapSaveButton:(Employee *)emp {
-    [self.org addEmployee:emp];
+- (void)didTapSaveButton:(EmployeeMO *)emp {
+    
+    [[self.context executeFetchRequest:[OrganizationMO fetchRequest] error:nil].firstObject addEmployeesObject:emp];
+    
+    NSError *error;
+    if (![self.context save:&error]) {
+        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
+    }
+    
+    [self reloadEmployees];
     [self.myTableView reloadData];
 }
 
@@ -76,6 +110,29 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 70.0;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(editingStyle == UITableViewCellEditingStyleDelete) {
+        NSFetchRequest *request = [EmployeeMO fetchRequest];
+        
+        EmployeeMO *emp = [self.context executeFetchRequest:request error:nil][indexPath.row];
+        
+        [[self.context executeFetchRequest:[OrganizationMO fetchRequest] error:nil].firstObject removeEmployeesObject:emp];
+        [self.context deleteObject:emp];
+        NSError *error = nil;
+        if (![self.context save:&error]) {
+            NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
+            return;
+        }
+        
+        [self reloadEmployees];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
 }
 
 @end
