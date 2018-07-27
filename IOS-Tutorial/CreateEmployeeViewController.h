@@ -19,7 +19,6 @@
 
 @interface CreateEmployeeViewController : UIViewController
 
-//@property (strong, nonatomic) OrganizationMO* org;
 @property (nonatomic, weak) id <CreateEmployeeDelegate> delegate;
 
 - (void)dissmissKeyboard;

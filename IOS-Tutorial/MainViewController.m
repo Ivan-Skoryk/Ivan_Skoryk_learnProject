@@ -21,11 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //[self createOrganizationAndAddingEmployees];
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.context = delegate.persistentContainer.viewContext;
     [self loadOrganization];
-    //NSLog(self.org.description);
     
     [self.myTableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
@@ -78,14 +76,12 @@
     if ([segue.identifier isEqualToString:@"showCreateEmployeeVC"]) {
         CreateEmployeeViewController *destVC = segue.destinationViewController;
         destVC.delegate = self;
-        //destVC.org = (OrganizationMO *)self.moOrg;
     }
 }
 
 #pragma mark - CreateEmployeeDelegate
 
 - (void)didTapSaveButton:(EmployeeMO *)emp {
-    //[self.org addEmployee:emp];
     
     [[self.context executeFetchRequest:[OrganizationMO fetchRequest] error:nil].firstObject addEmployeesObject:emp];
     
@@ -135,6 +131,7 @@
         }
         
         [self reloadEmployees];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
 }
 
