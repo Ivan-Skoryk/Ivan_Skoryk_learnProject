@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "Employee.h"
+#import "EmployeeMO.h"
 
 @protocol CreateEmployeeDelegate <NSObject>
 

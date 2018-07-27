@@ -41,6 +41,7 @@
         self.employee = [[Employee alloc] initWithFirstName:self.firstNameTextField.text
                                                    lastName:self.lastNameTextField.text
                                                      salary:[self.salaryTextField.text intValue]];
+        [EmployeeMO addNewEmployeeWithFirstName:self.firstNameTextField.text lastName:self.lastNameTextField.text salary:[self.salaryTextField.text intValue]];
         [self.delegate didTapSaveButton:self.employee];
         [self.navigationController popViewControllerAnimated:true];
     } else {

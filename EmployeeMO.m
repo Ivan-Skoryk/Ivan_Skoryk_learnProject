@@ -12,7 +12,7 @@
 
 @implementation EmployeeMO
 
-- (EmployeeMO *)addNewEmployeeWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal {
++ (EmployeeMO *)addNewEmployeeWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal {
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.persistentContainer.viewContext;
     
@@ -36,6 +36,10 @@
     mo.salary = emp.salary;
     
     return mo;
+}
+
+- (Employee *)moToEmployee {
+    return [[Employee alloc] initWithFirstName:self.firstName lastName:self.lastName salary:self.salary];
 }
 
 @end

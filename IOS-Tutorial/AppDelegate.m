@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "Organization.h"
+#import "OrganizationMO.h"
+#import "EmployeeMO.h"
 
 @interface AppDelegate ()
 
@@ -16,6 +18,16 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    NSLog(@"Documents Directory: %@", [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
+    
+    NSManagedObjectContext *context = self.persistentContainer.viewContext;
+
+    NSFetchRequest *request = [EmployeeMO fetchRequest];
+    [request setReturnsObjectsAsFaults:NO];
+    NSArray<EmployeeMO *> *empList = [context executeRequest:request error:nil];
+    NSLog(empList.description);
+    
     /*
     NSLog(@"Init employee\n");
     Employee *emp = [[Employee alloc] initWithFirstName:@"Vasiliy" lastName:@"Poopkin" salary:2500];
@@ -93,7 +105,7 @@
     // The persistent container for the application. This implementation creates and returns a container, having loaded the store for the application to it.
     @synchronized (self) {
         if (_persistentContainer == nil) {
-            _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"CoreDataTest"];
+            _persistentContainer = [[NSPersistentContainer alloc] initWithName:@"CoreModel"];
             [_persistentContainer loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription *storeDescription, NSError *error) {
                 if (error != nil) {
                     // Replace this implementation with code to handle the error appropriately.
