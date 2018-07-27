@@ -38,7 +38,6 @@
     NSFetchRequest *request = [OrganizationMO fetchRequest];
     
     self.moOrg = [threadContext executeFetchRequest:request error:nil].firstObject;
-    //NSLog(mo.description);
     
     self.org = [OrganizationMO moToOrganization:self.moOrg];
 }
@@ -68,6 +67,7 @@
 }
 
 #pragma mark - Segue
+
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showEmployeeDetail"]) {
         DetailViewController *destVC = segue.destinationViewController;
