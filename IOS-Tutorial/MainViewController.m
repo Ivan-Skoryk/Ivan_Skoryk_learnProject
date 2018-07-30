@@ -28,6 +28,7 @@
     
     [self.myTableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(employeesOrderDidChange) name:@"EmployeesOrderHasChanged" object:nil];
 }
 
 #pragma mark - Creating data
@@ -138,6 +139,12 @@
         [self reloadEmployees];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }
+}
+
+
+
+- (void)employeesOrderDidChange {
+    [self.myTableView reloadData];
 }
 
 @end
