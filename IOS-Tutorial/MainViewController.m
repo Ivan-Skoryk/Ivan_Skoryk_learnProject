@@ -8,6 +8,7 @@
 
 #import "MainViewController.h"
 #import "DetailViewController.h"
+#import "IOS_Tutorial-Swift.h"
 
 @interface MainViewController ()
 
@@ -69,13 +70,17 @@
 #pragma mark - Segue
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"showEmployeeDetail"]) {
+    if ([segue.identifier isEqualToString:@"showEmployeeDetailVC"]) {
         DetailViewController *destVC = segue.destinationViewController;
         destVC.employee = [self.org getEmployeeAtIndex:[self.myTableView indexPathForSelectedRow].row];
     }
     if ([segue.identifier isEqualToString:@"showCreateEmployeeVC"]) {
         CreateEmployeeViewController *destVC = segue.destinationViewController;
         destVC.delegate = self;
+    }
+    if ([segue.identifier isEqualToString:@"showOrgInfoVC"]) {
+        OrganizationInfoViewController *orgVC = segue.destinationViewController;
+        orgVC.org = self.org;
     }
 }
 
