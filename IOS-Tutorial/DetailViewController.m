@@ -11,6 +11,7 @@
 @interface DetailViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *salaryLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dObLabel;
 
 @end
 
@@ -19,8 +20,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = [NSString stringWithFormat:@"%@'s salary is", [self.employee.fullName componentsSeparatedByString:@" "][1]];
-    self.salaryLabel.text = [NSString stringWithFormat:@"%d", self.employee.salary];
+    self.title = [NSString stringWithFormat:@"%@'s", [self.employee.fullName componentsSeparatedByString:@" "][1]];
+    self.salaryLabel.text = [NSString stringWithFormat:@"Salary is: %d", self.employee.salary];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"dd.MM.YYYY"];
+    self.dObLabel.text = [NSString stringWithFormat:@"Date of Birth: %@", [df stringFromDate:self.employee.dateOfBirth]];
+    
 }
 
 @end

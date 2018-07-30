@@ -12,14 +12,15 @@
 
 @implementation EmployeeMO
 
-+ (NSManagedObject *)addNewEmployeeWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal {
++ (NSManagedObject *)addNewEmployeeWithFirstName:(NSString *)firstName lastName:(NSString *)lastName salary:(int)sal dateOfBirth:(NSDate*)dob {
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.persistentContainer.viewContext;
     
     NSManagedObject *emp = [NSEntityDescription insertNewObjectForEntityForName:@"EmployeeMO" inManagedObjectContext:context];
-    [emp setValue:fName forKey:@"firstName"];
-    [emp setValue:lName forKey:@"lastName"];
+    [emp setValue:firstName forKey:@"firstName"];
+    [emp setValue:lastName forKey:@"lastName"];
     [emp setValue:@(sal) forKey:@"salary"];
+    [emp setValue:dob forKey:@"dateOfBirth"];
     
     NSError *error;
     if (![context save:&error]) {
@@ -39,7 +40,7 @@
 }
 
 + (Employee *)moToEmployee:(NSManagedObject *)mo {
-    return [[Employee alloc] initWithFirstName:[mo valueForKey:@"firstName"] lastName:[mo valueForKey:@"lastName"] salary:[[mo valueForKey:@"salary"] intValue]];
+    return [[Employee alloc] initWithFirstName:[mo valueForKey:@"firstName"] lastName:[mo valueForKey:@"lastName"] salary:[[mo valueForKey:@"salary"] intValue] dateOfBirth:[mo valueForKey:@"dateOfBirth"]];
 }
 
 @end

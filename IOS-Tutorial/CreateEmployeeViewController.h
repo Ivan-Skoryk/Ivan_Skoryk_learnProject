@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Employee.h"
 #import "EmployeeMO.h"
-#import "OrganizationMO.h"
+#import "HSDatePickerViewController.h"
 
 @protocol CreateEmployeeDelegate <NSObject>
 
@@ -17,11 +17,13 @@
 
 @end
 
-@interface CreateEmployeeViewController : UIViewController
+@interface CreateEmployeeViewController : UIViewController<HSDatePickerViewControllerDelegate>
 
 @property (nonatomic, weak) id <CreateEmployeeDelegate> delegate;
 
 - (void)dissmissKeyboard;
+
+- (void)initDatePicker;
 
 - (void)createEmployee;
 
