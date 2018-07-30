@@ -21,6 +21,8 @@
 
 - (void)addEmployee:(Employee *)emp;
 
+- (void)randomizeOrder;
+
 - (int)calculateAverageSalary;
 
 - (int)calculateSalarySum;

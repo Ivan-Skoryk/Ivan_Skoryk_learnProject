@@ -16,7 +16,6 @@ import UIKit
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
     }
     
     //MARK: - Alert
@@ -35,4 +34,14 @@ import UIKit
         self.salarySum = self.org?.calculateSalarySum()
         self.alert(title: "Salary Sum", message: "\(salarySum ?? 0)", style: .alert);
     }
+    
+    @IBAction func randomizeOrderAction(_ sender: Any) {
+        self.org?.randomizeOrder()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: Notification.Name.kEmployeesOrderHasChanged), object: self)
+    }
+}
+
+
+extension NSNotification.Name {
+    static let kEmployeesOrderHasChanged = "EmployeesOrderHasChanged";
 }

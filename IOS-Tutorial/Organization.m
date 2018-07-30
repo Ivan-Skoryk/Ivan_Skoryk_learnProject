@@ -98,6 +98,19 @@
     self.employees = [NSArray arrayWithArray:tmp];
 }
 
+#pragma mark - Utility features
+
+- (void)randomizeOrder {
+    NSMutableArray *tmp = [NSMutableArray arrayWithArray:self.employees];
+    
+    for (int i = 0; i < [tmp count]; ++i) {
+        NSUInteger nElements = [tmp count] - i;
+        int n = (arc4random() % nElements) + i;
+        [tmp exchangeObjectAtIndex:i withObjectAtIndex:n];
+    }
+    self.employees = [NSArray arrayWithArray:tmp];
+}
+
 #pragma mark - Getting features
 
 - (NSArray<Employee *> *)getEmployeeArray {
