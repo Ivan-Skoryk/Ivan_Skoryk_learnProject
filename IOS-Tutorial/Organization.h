@@ -23,6 +23,8 @@
 
 - (int)calculateAverageSalary;
 
+- (int)calculateSalarySum;
+
 - (Employee *)employeeWithLowestSalary;
 
 - (NSArray<Employee *> *)employeesWithSalary:(int)sal tolerance:(int)tol;

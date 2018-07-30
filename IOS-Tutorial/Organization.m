@@ -53,10 +53,18 @@
 
 - (int)calculateAverageSalary {
     int res = 0;
+    res = [self calculateSalarySum];
+    res /= [self.employees count];
+    return res;
+}
+
+- (int)calculateSalarySum {
+    int res = 0;
+    
     for(int i = 0; i < [self.employees count]; i++) {
         res += self.employees[i].salary;
     }
-    res /= [self.employees count];
+    
     return res;
 }
 

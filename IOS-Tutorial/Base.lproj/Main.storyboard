@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="7eb-vi-p5M" kind="show" identifier="showEmployeeDetail" id="ksA-4t-erW"/>
+                                            <segue destination="7eb-vi-p5M" kind="show" identifier="showEmployeeDetailVC" id="ksA-4t-erW"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -50,6 +50,11 @@
                         <viewLayoutGuide key="safeArea" id="e2J-MF-hpf"/>
                     </view>
                     <navigationItem key="navigationItem" title="Employees" id="QUS-zN-2IV">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="R92-hS-Mbl">
+                            <connections>
+                                <segue destination="fOG-oh-c9Z" kind="show" identifier="showOrgInfoVC" id="IvH-It-1QI"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="YRi-Is-dzb">
                             <connections>
                                 <segue destination="Whb-Yg-CM1" kind="show" identifier="showCreateEmployeeVC" id="QpM-KN-uTg"/>
@@ -63,6 +68,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="raq-gg-N4Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-36" y="-9.6059113300492616"/>
+        </scene>
+        <!--Organization Info View Controller-->
+        <scene sceneID="hjc-ns-2iO">
+            <objects>
+                <viewController id="fOG-oh-c9Z" customClass="OrganizationInfoViewController" customModule="IOS_Tutorial" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="gjQ-TL-EId">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ljy-vJ-xD5">
+                                <rect key="frame" x="116.5" y="318" width="142" height="30"/>
+                                <state key="normal" title="Calculate salary sum"/>
+                                <connections>
+                                    <action selector="calcSalarySumAction:" destination="fOG-oh-c9Z" eventType="touchUpInside" id="MyN-oe-5dI"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ljy-vJ-xD5" firstAttribute="centerY" secondItem="gjQ-TL-EId" secondAttribute="centerY" id="KYG-fn-mQu"/>
+                            <constraint firstItem="ljy-vJ-xD5" firstAttribute="centerX" secondItem="gjQ-TL-EId" secondAttribute="centerX" id="TLF-EN-RPc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tte-oo-WMm"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ezG-Ht-mmM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-37.600000000000001" y="828.93553223388312"/>
         </scene>
         <!--Create Employee-->
         <scene sceneID="4f3-0d-Dj5">
@@ -182,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nR-I5-NJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="740" y="-718.29085457271367"/>
+            <point key="canvasLocation" x="741" y="-780"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Rhr-m2-jO9">
@@ -223,7 +256,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sJS-BB-VPD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="741.40625" y="-8.203125"/>
+            <point key="canvasLocation" x="741" y="-9"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ufw-GY-QPr">

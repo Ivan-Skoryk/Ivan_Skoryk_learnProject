@@ -22,6 +22,7 @@
 		4A3570FA2105D95C002CA6D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3570F92105D95C002CA6D3 /* main.m */; };
 		4A3571012105D9DD002CA6D3 /* Employee.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3571002105D9DD002CA6D3 /* Employee.m */; };
 		4A357129210627F5002CA6D3 /* Organization.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A357128210627F5002CA6D3 /* Organization.m */; };
+		4AE6EAE8210F04EE00C5A06F /* OrganizationInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE6EAE7210F04EE00C5A06F /* OrganizationInfoViewController.swift */; };
 		EBB678B33C17F195EB90030A /* libPods-IOS-Tutorial.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C8DEAE71B5B4DBD64A77182 /* libPods-IOS-Tutorial.a */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,8 @@
 		4A35712621060064002CA6D3 /* Employee.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Employee.h; sourceTree = "<group>"; };
 		4A357127210627C6002CA6D3 /* Organization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Organization.h; sourceTree = "<group>"; };
 		4A357128210627F5002CA6D3 /* Organization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Organization.m; sourceTree = "<group>"; };
+		4AE6EAE6210F04EE00C5A06F /* IOS-Tutorial-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IOS-Tutorial-Bridging-Header.h"; sourceTree = "<group>"; };
+		4AE6EAE7210F04EE00C5A06F /* OrganizationInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationInfoViewController.swift; sourceTree = "<group>"; };
 		5B6767ADB3382061405AA501 /* Pods-IOS-Tutorial.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS-Tutorial.release.xcconfig"; path = "Pods/Target Support Files/Pods-IOS-Tutorial/Pods-IOS-Tutorial.release.xcconfig"; sourceTree = "<group>"; };
 		F1B901094261A9B1F7120F1F /* Pods-IOS-Tutorial.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IOS-Tutorial.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IOS-Tutorial/Pods-IOS-Tutorial.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,11 +123,13 @@
 				4A1222FD21074F7C00055307 /* CreateEmployeeViewController.h */,
 				4A1222FE21074F7C00055307 /* CreateEmployeeViewController.m */,
 				4A3570F02105D95C002CA6D3 /* Main.storyboard */,
+				4AE6EAE7210F04EE00C5A06F /* OrganizationInfoViewController.swift */,
 				4A079C73210A1BA9000F6F6E /* CoreModel.xcdatamodeld */,
 				4A3570F32105D95C002CA6D3 /* Assets.xcassets */,
 				4A3570F52105D95C002CA6D3 /* LaunchScreen.storyboard */,
 				4A3570F82105D95C002CA6D3 /* Info.plist */,
 				4A3570F92105D95C002CA6D3 /* main.m */,
+				4AE6EAE6210F04EE00C5A06F /* IOS-Tutorial-Bridging-Header.h */,
 			);
 			path = "IOS-Tutorial";
 			sourceTree = "<group>";
@@ -171,6 +176,7 @@
 				TargetAttributes = {
 					4A3570E62105D95C002CA6D3 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -253,6 +259,7 @@
 				4A079C81210A1C7F000F6F6E /* OrganizationMO.m in Sources */,
 				4A079C82210A1C7F000F6F6E /* OrganizationMO+CoreDataProperties.m in Sources */,
 				4A3570EF2105D95C002CA6D3 /* MainViewController.m in Sources */,
+				4AE6EAE8210F04EE00C5A06F /* OrganizationInfoViewController.swift in Sources */,
 				4A079C7F210A1C7F000F6F6E /* EmployeeMO.m in Sources */,
 				4A3571012105D9DD002CA6D3 /* Employee.m in Sources */,
 				4A1222FF21074F7C00055307 /* CreateEmployeeViewController.m in Sources */,
@@ -402,7 +409,9 @@
 			baseConfigurationReference = F1B901094261A9B1F7120F1F /* Pods-IOS-Tutorial.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 8T58NYZDRU;
 				INFOPLIST_FILE = "IOS-Tutorial/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -411,6 +420,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ff.IOS-Tutorial2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "IOS-Tutorial/IOS-Tutorial-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -420,7 +432,9 @@
 			baseConfigurationReference = 5B6767ADB3382061405AA501 /* Pods-IOS-Tutorial.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 8T58NYZDRU;
 				INFOPLIST_FILE = "IOS-Tutorial/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -429,6 +443,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "ff.IOS-Tutorial2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "IOS-Tutorial/IOS-Tutorial-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
