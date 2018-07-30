@@ -22,10 +22,11 @@
     return [[self.firstName stringByAppendingString:@" "] stringByAppendingString: self.lastName];
 }
 
-- (id)initWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal {
+- (id)initWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal dateOfBirth:(NSDate*)dob {
     self.firstName = fName;
     self.lastName = lName;
     self.salary = sal;
+    self.dateOfBirth = dob;
     return self;
 }
 

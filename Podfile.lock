@@ -1,0 +1,16 @@
+PODS:
+  - HSDatePickerViewController (1.0.4)
+
+DEPENDENCIES:
+  - HSDatePickerViewController (~> 1.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - HSDatePickerViewController
+
+SPEC CHECKSUMS:
+  HSDatePickerViewController: 5a72b71f8c3b10e76f2c28a898f8572b551432a6
+
+PODFILE CHECKSUM: edde2dc44dc7229005818231c5ab1235a5241419
+
+COCOAPODS: 1.5.2

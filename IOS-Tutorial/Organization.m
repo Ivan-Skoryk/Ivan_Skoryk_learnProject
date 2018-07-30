@@ -39,7 +39,7 @@
 - (void)addEmployeeWithName:(NSString *)empName {
     Employee *emp = [[Employee alloc] initWithFirstName:[empName componentsSeparatedByString:@" "][0] \
                                                lastName:[empName componentsSeparatedByString:@" "][1] \
-                                                 salary:((arc4random_uniform(491) + 10)*10)];
+                                                 salary:((arc4random_uniform(491) + 10)*10) dateOfBirth:[NSDate date]];
     [self addEmployee:emp];
 }
 

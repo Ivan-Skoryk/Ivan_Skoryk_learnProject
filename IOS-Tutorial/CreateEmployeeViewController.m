@@ -12,10 +12,14 @@
 
 #pragma mark - Variables
 
+@property (strong, nonatomic) HSDatePickerViewController *datePicker;
+@property (strong, nonatomic) NSDate *date;
 @property (strong, nonatomic) UITapGestureRecognizer *tap;
 @property (weak, nonatomic) IBOutlet UITextField *firstNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *lastNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *salaryTextField;
+@property (weak, nonatomic) IBOutlet UIButton *setDateButton;
+
 
 @end
 
@@ -24,8 +28,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initDatePicker];
     self.tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dissmissKeyboard)];
-    
     [self.view addGestureRecognizer:self.tap];
 }
 
@@ -35,9 +39,16 @@
     [self.view endEditing:true];
 }
 
+- (void)initDatePicker {
+    self.datePicker = [[HSDatePickerViewController alloc] init];
+    self.datePicker.delegate = self;
+    [self.datePicker.dateFormatter setDateFormat:@"MMM dd"];
+    [self.datePicker.monthAndYearLabelDateFormater setDateFormat:@"MMMM YYYY"];
+}
+
 - (void)createEmployee {
-    if (![self.firstNameTextField.text  isEqual: @""] || ![self.lastNameTextField.text  isEqual: @""] || ![self.salaryTextField.text  isEqual: @""]) {
-        EmployeeMO *emp = [EmployeeMO addNewEmployeeWithFirstName:self.firstNameTextField.text lastName:self.lastNameTextField.text salary:[self.salaryTextField.text intValue]];
+    if (![self.firstNameTextField.text  isEqual: @""] || ![self.lastNameTextField.text  isEqual: @""] || ![self.salaryTextField.text  isEqual: @""] || !self.date) {
+        EmployeeMO *emp = [EmployeeMO addNewEmployeeWithFirstName:self.firstNameTextField.text lastName:self.lastNameTextField.text salary:[self.salaryTextField.text intValue] dateOfBirth:self.date];
         [self.delegate didTapSaveButton:emp];
         [self.navigationController popViewControllerAnimated:true];
     } else {
@@ -62,6 +73,19 @@
 
 - (IBAction)saveButtonAction:(id)sender {
     [self createEmployee];
+}
+
+- (IBAction)setDateAction:(id)sender {
+    [self presentViewController:self.datePicker animated:YES completion:nil];
+}
+
+#pragma mark - HSDatePickerViewControllerDelegate
+
+- (void)hsDatePickerPickedDate:(NSDate *)date {
+    self.date = date;
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"dd.MM.YYYY"];
+    [self.setDateButton setTitle:[NSString stringWithFormat:@"%@", [df stringFromDate:self.date]] forState:UIControlStateNormal];
 }
 
 @end

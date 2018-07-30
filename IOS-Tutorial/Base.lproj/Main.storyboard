@@ -120,6 +120,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" textContentType="postal-code"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bGb-DX-8yR">
+                                <rect key="frame" x="16" y="198" width="92" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="92" id="WdZ-8E-3Y0"/>
+                                    <constraint firstAttribute="height" constant="30" id="olV-Yn-iXC"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xFg-iF-msy">
+                                <rect key="frame" x="116" y="198" width="243" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="IBF-7q-BYs"/>
+                                </constraints>
+                                <state key="normal" title="Set Date"/>
+                                <connections>
+                                    <action selector="setDateAction:" destination="Whb-Yg-CM1" eventType="touchUpInside" id="0yY-2y-Hv9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -129,15 +149,20 @@
                             <constraint firstItem="pye-tF-vHY" firstAttribute="top" secondItem="2jw-U9-naN" secondAttribute="top" constant="20" id="Mv2-hR-z01"/>
                             <constraint firstItem="e56-x4-U8f" firstAttribute="top" secondItem="pye-tF-vHY" secondAttribute="bottom" constant="8" id="T8A-vm-dVK"/>
                             <constraint firstItem="2jw-U9-naN" firstAttribute="trailing" secondItem="pye-tF-vHY" secondAttribute="trailing" constant="16" id="TBv-DS-8M9"/>
+                            <constraint firstItem="2jw-U9-naN" firstAttribute="trailing" secondItem="xFg-iF-msy" secondAttribute="trailing" constant="16" id="Thq-c9-kXZ"/>
                             <constraint firstItem="kwa-aF-Ixq" firstAttribute="top" secondItem="NWu-co-tGl" secondAttribute="bottom" constant="8" id="WlC-c0-Hmk"/>
                             <constraint firstItem="NWu-co-tGl" firstAttribute="leading" secondItem="2jw-U9-naN" secondAttribute="leading" constant="16" id="dHu-Qz-DBX"/>
+                            <constraint firstItem="xFg-iF-msy" firstAttribute="leading" secondItem="bGb-DX-8yR" secondAttribute="trailing" constant="8" id="eVz-tr-zon"/>
                             <constraint firstItem="T4M-bp-hU3" firstAttribute="leading" secondItem="2jw-U9-naN" secondAttribute="leading" constant="16" id="gNb-0l-0uP"/>
                             <constraint firstItem="T4M-bp-hU3" firstAttribute="top" secondItem="kwa-aF-Ixq" secondAttribute="bottom" constant="8" id="iTl-bz-Set"/>
+                            <constraint firstItem="bGb-DX-8yR" firstAttribute="top" secondItem="T4M-bp-hU3" secondAttribute="bottom" constant="8" id="ijE-c2-ynD"/>
                             <constraint firstItem="2jw-U9-naN" firstAttribute="trailing" secondItem="e56-x4-U8f" secondAttribute="trailing" constant="16" id="kwo-Sh-7zx"/>
                             <constraint firstItem="Zx5-Q3-C7Z" firstAttribute="top" secondItem="e56-x4-U8f" secondAttribute="bottom" constant="8" id="mYh-h7-uPZ"/>
                             <constraint firstItem="NWu-co-tGl" firstAttribute="top" secondItem="2jw-U9-naN" secondAttribute="top" constant="20" id="mch-2X-8YY"/>
                             <constraint firstItem="kwa-aF-Ixq" firstAttribute="leading" secondItem="2jw-U9-naN" secondAttribute="leading" constant="16" id="nBX-nI-stE"/>
+                            <constraint firstItem="xFg-iF-msy" firstAttribute="top" secondItem="Zx5-Q3-C7Z" secondAttribute="bottom" constant="8" id="pgl-5u-I7K"/>
                             <constraint firstItem="Zx5-Q3-C7Z" firstAttribute="leading" secondItem="T4M-bp-hU3" secondAttribute="trailing" constant="8" id="qTo-nc-Ygj"/>
+                            <constraint firstItem="bGb-DX-8yR" firstAttribute="leading" secondItem="2jw-U9-naN" secondAttribute="leading" constant="16" id="uG1-rS-0DL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2jw-U9-naN"/>
                     </view>
@@ -152,11 +177,12 @@
                         <outlet property="firstNameTextField" destination="pye-tF-vHY" id="OJu-0S-Aj5"/>
                         <outlet property="lastNameTextField" destination="e56-x4-U8f" id="iqZ-kT-Y0y"/>
                         <outlet property="salaryTextField" destination="Zx5-Q3-C7Z" id="PJY-sC-uSE"/>
+                        <outlet property="setDateButton" destination="xFg-iF-msy" id="PKL-lG-2G6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nR-I5-NJb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="740.39408866995075" y="-717.60000000000002"/>
+            <point key="canvasLocation" x="740" y="-718.29085457271367"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="Rhr-m2-jO9">
@@ -166,8 +192,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQ9-bB-Bs5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="salaryLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EQ9-bB-Bs5">
                                 <rect key="frame" x="0.0" y="321.5" width="375" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dObLabel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hl-01-zu9">
+                                <rect key="frame" x="0.0" y="289" width="375" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -175,13 +207,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="EQ9-bB-Bs5" firstAttribute="top" secondItem="6hl-01-zu9" secondAttribute="bottom" constant="8" id="Ek4-2i-a2v"/>
                             <constraint firstItem="EQ9-bB-Bs5" firstAttribute="trailing" secondItem="prL-DX-80n" secondAttribute="trailing" id="PaE-9t-IFj"/>
+                            <constraint firstItem="6hl-01-zu9" firstAttribute="trailing" secondItem="prL-DX-80n" secondAttribute="trailing" id="bov-4h-eO1"/>
                             <constraint firstItem="EQ9-bB-Bs5" firstAttribute="leading" secondItem="prL-DX-80n" secondAttribute="leading" id="bzq-aw-xBG"/>
                             <constraint firstItem="EQ9-bB-Bs5" firstAttribute="centerY" secondItem="YvG-5P-Pka" secondAttribute="centerY" id="lac-Wx-wa3"/>
+                            <constraint firstItem="6hl-01-zu9" firstAttribute="leading" secondItem="prL-DX-80n" secondAttribute="leading" id="tVT-1B-owP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="prL-DX-80n"/>
                     </view>
                     <connections>
+                        <outlet property="dObLabel" destination="6hl-01-zu9" id="4PN-7M-vbT"/>
                         <outlet property="salaryLabel" destination="EQ9-bB-Bs5" id="JI5-3c-fi7"/>
                     </connections>
                 </viewController>
