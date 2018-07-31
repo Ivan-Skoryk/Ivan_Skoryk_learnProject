@@ -20,6 +20,18 @@ import Alamofire
         
     }
     
+    //MARK: - Utility
+    
+    func fibonacci(_ number: Int) -> (Int64) {
+        if (number == 1 || number == 2) {
+            return 1
+        }
+        if number == 0 {
+            return 0
+        }
+        return fibonacci(number - 1) + fibonacci(number - 2)
+    }
+    
     //MARK: - Alert
     
     func orgsAlert(_ orgsName: [String]) {
@@ -68,8 +80,41 @@ import Alamofire
             self.orgsAlert(orgsName)
         }
     }
+    
+    @IBAction func fibonacciAction(_ sender: Any) {
+        SVProgressHUD.show()
+        
+        DispatchQueue.global(qos: .background).async(execute: {
+            let res = self.fibonacci(40)
+            DispatchQueue.main.async {
+                SVProgressHUD.dismiss()
+                if let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController,
+                    let visibleVC = navController.visibleViewController {
+                    visibleVC.fibonacciAlert(res)
+                }
+                else {
+                    self.fibonacciAlert(res)
+                }
+            }
+        })
+    }
 }
 
+//MARK: - UIViewController extension
+
+extension UIViewController {
+    func fibonacciAlert(_ number: Int64) {
+        DispatchQueue.global(qos: .background).async {
+            let alertController = UIAlertController(title: "Fibonacci", message: "40th number is \(number)", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
+            alertController.addAction(action)
+            DispatchQueue.main.async {
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+}
 
 extension NSNotification.Name {
     static let kEmployeesOrderHasChanged = "EmployeesOrderHasChanged"

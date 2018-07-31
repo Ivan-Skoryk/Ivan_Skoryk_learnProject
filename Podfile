@@ -9,5 +9,6 @@ target 'IOS-Tutorial' do
 
   pod 'HSDatePickerViewController', '~> 1.0'
   pod 'Alamofire', '~> 4.7'
+  pod 'SVProgressHUD'
   
 end
