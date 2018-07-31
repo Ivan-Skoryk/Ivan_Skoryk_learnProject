@@ -8,4 +8,6 @@ target 'IOS-Tutorial' do
   # Pods for IOS-Tutorial
 
   pod 'HSDatePickerViewController', '~> 1.0'
+  pod 'Alamofire', '~> 4.7'
+  
 end

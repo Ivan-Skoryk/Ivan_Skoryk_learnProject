@@ -12,6 +12,14 @@
 
 @implementation EmployeeMO
 
+//- (id)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName salary:(int)sal dateOfBirth:(NSDate*)dob {
+//    self.firstName = firstName;
+//    self.lastName = lastName;
+//    self.salary = sal;
+//    self.dateOfBirth = dob;
+//    return self;
+//}
+
 + (NSManagedObject *)addNewEmployeeWithFirstName:(NSString *)firstName lastName:(NSString *)lastName salary:(int)sal dateOfBirth:(NSDate*)dob {
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.persistentContainer.viewContext;
@@ -35,6 +43,7 @@
     mo.firstName = [emp.fullName componentsSeparatedByString:@" "][0];
     mo.lastName = [emp.fullName componentsSeparatedByString:@" "][1];
     mo.salary = emp.salary;
+    mo.dateOfBirth = emp.dateOfBirth;
     
     return mo;
 }

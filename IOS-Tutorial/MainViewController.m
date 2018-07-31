@@ -20,25 +20,40 @@
 
 #pragma mark - Variables
 
+- (void)dealloc {
+    [NSNotificationCenter.defaultCenter removeObserver:self];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     self.context = delegate.persistentContainer.viewContext;
-    [self loadOrganization];
+    [self loadFirstOrganization];
     
     [self.myTableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
     
     [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(employeesOrderDidChange) name:@"EmployeesOrderHasChanged" object:nil];
+    [NSNotificationCenter.defaultCenter addObserver:self selector:@selector(catchOrgName:) name:@"OrganizationHasPicked" object:nil];
 }
 
 #pragma mark - Creating data
 
-- (void)loadOrganization {
+- (void)loadFirstOrganization {
     NSManagedObjectContext *threadContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     [threadContext setParentContext:self.context];
     
     NSFetchRequest *request = [OrganizationMO fetchRequest];
+    self.moOrg = [threadContext executeFetchRequest:request error:nil].firstObject;
     
+    self.org = [OrganizationMO moToOrganization:self.moOrg];
+}
+
+- (void)loadOrganizationWithName:(NSString *)orgName {
+    NSManagedObjectContext *threadContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    [threadContext setParentContext:self.context];
+    
+    NSFetchRequest *request = [OrganizationMO fetchRequest];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"name == %@", orgName]];
     self.moOrg = [threadContext executeFetchRequest:request error:nil].firstObject;
     
     self.org = [OrganizationMO moToOrganization:self.moOrg];
@@ -88,8 +103,9 @@
 #pragma mark - CreateEmployeeDelegate
 
 - (void)didTapSaveButton:(EmployeeMO *)emp {
-    
-    [[self.context executeFetchRequest:[OrganizationMO fetchRequest] error:nil].firstObject addEmployeesObject:emp];
+    NSFetchRequest *request = [OrganizationMO fetchRequest];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"name == %@", self.org.name]];
+    [[self.context executeFetchRequest:request error:nil].firstObject addEmployeesObject:emp];
     
     NSError *error;
     if (![self.context save:&error]) {
@@ -124,12 +140,17 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if(editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        Employee *tmp = [self.org getEmployeeAtIndex:indexPath.row];
         NSFetchRequest *request = [EmployeeMO fetchRequest];
+        [request setPredicate:[NSPredicate predicateWithFormat:@"firstName == %@ AND lastName == %@",[tmp.fullName componentsSeparatedByString:@" "][0], [tmp.fullName componentsSeparatedByString:@" "][1]]];
+        EmployeeMO *emp = [self.context executeFetchRequest:request error:nil].firstObject;
         
-        EmployeeMO *emp = [self.context executeFetchRequest:request error:nil][indexPath.row];
-        
-        [[self.context executeFetchRequest:[OrganizationMO fetchRequest] error:nil].firstObject removeEmployeesObject:emp];
+        NSFetchRequest *orgRequest = [OrganizationMO fetchRequest];
+        [orgRequest setPredicate:[NSPredicate predicateWithFormat:@"name == %@", self.org.name]];
+        [[self.context executeFetchRequest:orgRequest error:nil].firstObject  removeEmployeesObject:emp];
         [self.context deleteObject:emp];
+        
         NSError *error = nil;
         if (![self.context save:&error]) {
             NSLog(@"Can't Delete! %@ %@", error, [error localizedDescription]);
@@ -141,7 +162,10 @@
     }
 }
 
-
+- (void)catchOrgName:(NSNotification *)notification {
+    [self loadOrganizationWithName:(NSString *)notification.userInfo[@"name"]];
+    [self.myTableView reloadData];
+}
 
 - (void)employeesOrderDidChange {
     [self.myTableView reloadData];

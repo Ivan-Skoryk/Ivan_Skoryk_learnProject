@@ -14,6 +14,7 @@
 		4A079C82210A1C7F000F6F6E /* OrganizationMO+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A079C7E210A1C7F000F6F6E /* OrganizationMO+CoreDataProperties.m */; };
 		4A1222FB21073B0300055307 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1222FA21073B0200055307 /* DetailViewController.m */; };
 		4A1222FF21074F7C00055307 /* CreateEmployeeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1222FE21074F7C00055307 /* CreateEmployeeViewController.m */; };
+		4A232331210F46C5003BFEB9 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A232330210F46C5003BFEB9 /* RequestManager.swift */; };
 		4A3570EC2105D95C002CA6D3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3570EB2105D95C002CA6D3 /* AppDelegate.m */; };
 		4A3570EF2105D95C002CA6D3 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A3570EE2105D95C002CA6D3 /* MainViewController.m */; };
 		4A3570F22105D95C002CA6D3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A3570F02105D95C002CA6D3 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 		4A1222FA21073B0200055307 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		4A1222FD21074F7C00055307 /* CreateEmployeeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateEmployeeViewController.h; sourceTree = "<group>"; };
 		4A1222FE21074F7C00055307 /* CreateEmployeeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateEmployeeViewController.m; sourceTree = "<group>"; };
+		4A232330210F46C5003BFEB9 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		4A3570E72105D95C002CA6D3 /* IOS-Tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IOS-Tutorial.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A3570EA2105D95C002CA6D3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4A3570EB2105D95C002CA6D3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 				4A1222FE21074F7C00055307 /* CreateEmployeeViewController.m */,
 				4A3570F02105D95C002CA6D3 /* Main.storyboard */,
 				4AE6EAE7210F04EE00C5A06F /* OrganizationInfoViewController.swift */,
+				4A232330210F46C5003BFEB9 /* RequestManager.swift */,
 				4A079C73210A1BA9000F6F6E /* CoreModel.xcdatamodeld */,
 				4A3570F32105D95C002CA6D3 /* Assets.xcassets */,
 				4A3570F52105D95C002CA6D3 /* LaunchScreen.storyboard */,
@@ -266,6 +269,7 @@
 				4A3570FA2105D95C002CA6D3 /* main.m in Sources */,
 				4A3570EC2105D95C002CA6D3 /* AppDelegate.m in Sources */,
 				4A1222FB21073B0300055307 /* DetailViewController.m in Sources */,
+				4A232331210F46C5003BFEB9 /* RequestManager.swift in Sources */,
 				4A357129210627F5002CA6D3 /* Organization.m in Sources */,
 				4A079C80210A1C7F000F6F6E /* EmployeeMO+CoreDataProperties.m in Sources */,
 			);
@@ -418,6 +422,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "ff.IOS-Tutorial2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "IOS-Tutorial/IOS-Tutorial-Bridging-Header.h";
@@ -441,6 +446,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "ff.IOS-Tutorial2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "IOS-Tutorial/IOS-Tutorial-Bridging-Header.h";

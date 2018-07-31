@@ -13,12 +13,31 @@
 
 @implementation OrganizationMO
 
-+ (OrganizationMO *)addNewOrganizationWithName:(NSString *)name {
++ (void)deleteAllOrganizations {
+    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    NSManagedObjectContext *context = delegate.persistentContainer.viewContext;
+    
+    NSFetchRequest *request = [OrganizationMO fetchRequest];
+    NSArray *orgArr = [context executeFetchRequest:request error:nil];
+    
+    for (NSManagedObject *org in orgArr) {
+        [context deleteObject:org];
+    }
+    
+    [delegate saveContext];
+}
+
++ (OrganizationMO *)addNewOrganizationWithName:(NSString *)name andEmployees:(NSArray *)empArr {
     AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     NSManagedObjectContext *context = delegate.persistentContainer.viewContext;
     
     OrganizationMO *org = [NSEntityDescription insertNewObjectForEntityForName:@"OrganizationMO" inManagedObjectContext:context];
     [org setValue:name forKey:@"name"];
+    
+    if (empArr != nil) {
+        NSSet<EmployeeMO *> *empSet = [NSSet setWithArray:empArr];
+        [org addEmployees:empSet];
+    }
     
     NSError *error;
     if (![context save:&error]) {

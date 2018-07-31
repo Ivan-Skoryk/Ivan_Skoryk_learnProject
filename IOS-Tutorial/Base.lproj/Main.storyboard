@@ -91,14 +91,24 @@
                                     <action selector="randomizeOrderAction:" destination="fOG-oh-c9Z" eventType="touchUpInside" id="3MX-dp-a65"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u7N-kX-q89">
+                                <rect key="frame" x="120" y="394" width="135" height="30"/>
+                                <state key="normal" title="Fetch organizations"/>
+                                <connections>
+                                    <action selector="fetchOrganizationsAction:" destination="fOG-oh-c9Z" eventType="touchUpInside" id="X0x-Wp-POL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="aOs-7o-eUw" firstAttribute="top" secondItem="ljy-vJ-xD5" secondAttribute="bottom" constant="8" id="5eh-nl-Xc5"/>
+                            <constraint firstItem="u7N-kX-q89" firstAttribute="top" secondItem="aOs-7o-eUw" secondAttribute="bottom" constant="8" id="CI1-KH-jpA"/>
                             <constraint firstItem="tte-oo-WMm" firstAttribute="trailing" secondItem="aOs-7o-eUw" secondAttribute="trailing" constant="129" id="HPg-x3-RkP"/>
                             <constraint firstItem="ljy-vJ-xD5" firstAttribute="centerY" secondItem="gjQ-TL-EId" secondAttribute="centerY" id="KYG-fn-mQu"/>
                             <constraint firstItem="ljy-vJ-xD5" firstAttribute="centerX" secondItem="gjQ-TL-EId" secondAttribute="centerX" id="TLF-EN-RPc"/>
+                            <constraint firstItem="u7N-kX-q89" firstAttribute="leading" secondItem="tte-oo-WMm" secondAttribute="leading" constant="120" id="XI5-Yi-T61"/>
                             <constraint firstItem="aOs-7o-eUw" firstAttribute="leading" secondItem="tte-oo-WMm" secondAttribute="leading" constant="129" id="ZxJ-r3-16X"/>
+                            <constraint firstItem="tte-oo-WMm" firstAttribute="trailing" secondItem="u7N-kX-q89" secondAttribute="trailing" constant="120" id="tnl-Uh-Epq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tte-oo-WMm"/>
                     </view>

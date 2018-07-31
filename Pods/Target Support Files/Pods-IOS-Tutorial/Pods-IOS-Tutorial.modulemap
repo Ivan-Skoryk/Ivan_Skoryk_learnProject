@@ -1,0 +1,6 @@
+module Pods_IOS_Tutorial {
+  umbrella header "Pods-IOS-Tutorial-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+//#import "OrganizationMO.h"
 
 @interface AppDelegate ()
 
@@ -15,6 +16,17 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+//    NSLog(@"%@",[[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]);
+//    
+//    //[OrganizationMO addNewOrganizationWithName:@"Org1" andEmployees:nil];
+//    
+//    NSFetchRequest *request = [OrganizationMO fetchRequest];
+//    
+//    OrganizationMO *org = [self.persistentContainer.viewContext executeFetchRequest:request error:nil].firstObject;
+//    [self.persistentContainer.viewContext deleteObject:org];
+//    
+//    [self saveContext];
     
     return YES;
 }

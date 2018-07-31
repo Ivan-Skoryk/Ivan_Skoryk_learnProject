@@ -18,7 +18,9 @@
 @property (nonatomic, strong) OrganizationMO *moOrg;
 @property (nonatomic, strong) Organization *org;
 
-- (void)loadOrganization;
+- (void)loadFirstOrganization;
+
+- (void)loadOrganizationWithName:(NSString *)name;
 
 - (void)reloadEmployees;
 
