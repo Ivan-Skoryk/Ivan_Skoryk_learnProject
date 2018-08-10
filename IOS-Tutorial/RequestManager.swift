@@ -53,7 +53,7 @@ class RequestManager: NSObject {
         }
     }
     
-    func generateRandomDate(daysBack: Int)-> Date?{
+    func generateRandomDate(daysBack: Int)-> Date? {
         let day = arc4random_uniform(UInt32(daysBack))+1
 
         

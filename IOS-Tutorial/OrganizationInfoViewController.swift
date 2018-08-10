@@ -86,6 +86,7 @@ import Alamofire
         
         DispatchQueue.global(qos: .background).async(execute: {
             let res = self.fibonacci(40)
+            
             DispatchQueue.main.async {
                 SVProgressHUD.dismiss()
                 if let navController = UIApplication.shared.keyWindow?.rootViewController as? UINavigationController,
@@ -115,6 +116,8 @@ extension UIViewController {
         }
     }
 }
+
+//MARK: - Notification extension
 
 extension NSNotification.Name {
     static let kEmployeesOrderHasChanged = "EmployeesOrderHasChanged"

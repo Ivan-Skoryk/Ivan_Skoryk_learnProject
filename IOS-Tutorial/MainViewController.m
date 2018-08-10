@@ -12,13 +12,13 @@
 
 @interface MainViewController ()
 
+#pragma mark - Variables
+
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 
 @end
 
 @implementation MainViewController
-
-#pragma mark - Variables
 
 - (void)dealloc {
     [NSNotificationCenter.defaultCenter removeObserver:self];

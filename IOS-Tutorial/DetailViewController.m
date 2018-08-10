@@ -26,7 +26,6 @@
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"dd.MM.YYYY"];
     self.dObLabel.text = [NSString stringWithFormat:@"Date of Birth: %@", [df stringFromDate:self.employee.dateOfBirth]];
-    
 }
 
 @end

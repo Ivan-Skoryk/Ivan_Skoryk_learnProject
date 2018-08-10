@@ -17,9 +17,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface EmployeeMO : NSManagedObject
 
-//- (id)initWithFirstName:(NSString *)firstName lastName:(NSString *)lastName salary:(int)sal dateOfBirth:(NSDate*)dob;
 + (EmployeeMO *)addNewEmployeeWithFirstName:(NSString *)fName lastName:(NSString *)lName salary:(int)sal dateOfBirth:(NSDate*)dob;
+
 + (EmployeeMO *)employeeToMO:(Employee *)emp;
+
 + (Employee *)moToEmployee:(NSManagedObject *)mo;
 
 @end

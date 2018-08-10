@@ -27,6 +27,7 @@
     self.lastName = lName;
     self.salary = sal;
     self.dateOfBirth = dob;
+    
     return self;
 }
 

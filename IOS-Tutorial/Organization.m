@@ -49,7 +49,7 @@
     self.employees = tmp;
 }
 
-#pragma mark - selecting features
+#pragma mark - Selecting features
 
 - (int)calculateAverageSalary {
     int res = 0;
